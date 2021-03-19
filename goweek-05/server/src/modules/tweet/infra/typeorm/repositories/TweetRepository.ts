@@ -12,8 +12,8 @@ class FakeTweetRepository implements ITweetRepository {
     this.ormRepository = getMongoRepository(Tweet, 'mongo');
   }
 
-  public async create({ user_id, content }: ICreateTweetDTO): Promise<Tweet> {
-    const tweet = this.ormRepository.create({ user_id, content });
+  public async create({ user, content }: ICreateTweetDTO): Promise<Tweet> {
+    const tweet = this.ormRepository.create({ user, content });
 
     await this.ormRepository.save(tweet);
 

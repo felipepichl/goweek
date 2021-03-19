@@ -1,7 +1,7 @@
-import { ObjectID } from 'mongodb';
+import User from '@modules/users/infra/typeorm/schema/User';
 
 interface ICreateTweetDTO {
-  user_id: ObjectID;
+  user: User;
   content: string;
 }
 
