@@ -27,7 +27,7 @@ class UsersRepository implements IUsersRepository {
   }
 
   public async findById(user_id: ObjectID): Promise<User> {
-    const user = this.ormRepository.findOne({ where: user_id });
+    const user = await this.ormRepository.findOne({ where: user_id });
 
     return user;
   }

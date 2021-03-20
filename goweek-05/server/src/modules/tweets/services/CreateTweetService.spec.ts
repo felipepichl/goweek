@@ -20,6 +20,8 @@ describe('CreateTweet', () => {
       content: 'content',
     });
 
+    console.log(tweet);
+
     expect(tweet).toHaveProperty('id');
   });
 });

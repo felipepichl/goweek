@@ -8,10 +8,10 @@ import ITweetRepository from '../ITweetsRepository';
 class FakeTweetsRepository implements ITweetRepository {
   private tweets: Tweet[] = [];
 
-  public async create({ user, content }: ICreateTweetDTO): Promise<Tweet> {
+  public async create(tweetData: ICreateTweetDTO): Promise<Tweet> {
     const tweet = new Tweet();
 
-    Object.assign(tweet, { id: new ObjectID() }, user, content);
+    Object.assign(tweet, { id: new ObjectID() }, tweetData);
 
     this.tweets.push(tweet);
 

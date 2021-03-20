@@ -8,15 +8,10 @@ import IUsersRepository from '../IUsersRepository';
 class FakeUsersRepository implements IUsersRepository {
   private users: User[] = [];
 
-  public async create({
-    login,
-    name,
-    bio,
-    avatar_url,
-  }: ICreateUserDTO): Promise<User> {
+  public async create(userData: ICreateUserDTO): Promise<User> {
     const user = new User();
 
-    Object.assign(user, { id: new ObjectID() }, login, name, bio, avatar_url);
+    Object.assign(user, { id: new ObjectID() }, userData);
 
     this.users.push(user);
 
