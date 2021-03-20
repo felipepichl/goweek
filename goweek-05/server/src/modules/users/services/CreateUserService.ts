@@ -1,3 +1,4 @@
+import api from 'services/api';
 import { injectable, inject } from 'tsyringe';
 
 import User from '../infra/typeorm/schema/User';
@@ -23,6 +24,8 @@ class CreateUserService {
     bio,
     avatar_url,
   }: IRequest): Promise<User> {
+    const apiResponse = await api.get(`/${login}`);
+
     const user = await this.usersRepository.create({
       login,
       name,
