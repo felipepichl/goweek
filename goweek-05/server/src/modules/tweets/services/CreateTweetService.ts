@@ -1,6 +1,8 @@
 import { ObjectID } from 'mongodb';
 import { injectable, inject } from 'tsyringe';
 
+import IUserRepository from '@modules/users/repositories/IUsersRepository';
+
 import Tweet from '../infra/typeorm/schema/Tweet';
 import ITweetRepository from '../repositories/ITweetsRepository';
 
@@ -14,12 +16,17 @@ class CreateTweetService {
   constructor(
     @inject('TweetsRepository')
     private tweetsRepository: ITweetRepository,
+
+    @inject('UsersRepository')
+    private usersRepository: IUserRepository,
   ) {}
 
   public async execute({ user_id, content }: IRequest): Promise<Tweet> {
-    // const tweet = await this.tweetsRepository.create({ user_id, content });
+    const user = await this.usersRepository.findById(user_id);
 
-    return null;
+    const tweet = await this.tweetsRepository.create({ user, content });
+
+    return tweet;
   }
 }
 
