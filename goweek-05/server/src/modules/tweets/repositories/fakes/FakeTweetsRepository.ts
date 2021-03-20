@@ -1,11 +1,11 @@
 import { ObjectID } from 'mongodb';
 
-import ICreateTweetDTO from '@modules/tweet/dtos/ICreateTweetDTO';
+import ICreateTweetDTO from '@modules/tweets/dtos/ICreateTweetDTO';
 
-import Tweet from '@modules/tweet/infra/typeorm/schema/Tweet';
-import ITweetRepository from '../ITweetRepository';
+import Tweet from '@modules/tweets/infra/typeorm/schema/Tweet';
+import ITweetRepository from '../ITweetsRepository';
 
-class FakeTweetRepository implements ITweetRepository {
+class FakeTweetsRepository implements ITweetRepository {
   private tweets: Tweet[] = [];
 
   public async create({ user, content }: ICreateTweetDTO): Promise<Tweet> {
@@ -19,4 +19,4 @@ class FakeTweetRepository implements ITweetRepository {
   }
 }
 
-export default FakeTweetRepository;
+export default FakeTweetsRepository;

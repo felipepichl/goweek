@@ -1,11 +1,11 @@
 import { getMongoRepository, MongoRepository } from 'typeorm';
 
-import Tweet from '@modules/tweet/infra/typeorm/schema/Tweet';
-import ITweetRepository from '@modules/tweet/repositories/ITweetRepository';
+import Tweet from '@modules/tweets/infra/typeorm/schema/Tweet';
+import ITweetRepository from '@modules/tweets/repositories/ITweetRepository';
 
-import ICreateTweetDTO from '@modules/tweet/dtos/ICreateTweetDTO';
+import ICreateTweetDTO from '@modules/tweets/dtos/ICreateTweetDTO';
 
-class TweetRepository implements ITweetRepository {
+class TweetsRepository implements ITweetRepository {
   private ormRepository: MongoRepository<Tweet>;
 
   constructor() {
@@ -21,4 +21,4 @@ class TweetRepository implements ITweetRepository {
   }
 }
 
-export default TweetRepository;
+export default TweetsRepository;

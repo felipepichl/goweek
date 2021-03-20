@@ -3,8 +3,8 @@ import { container } from 'tsyringe';
 import IUsersRepository from '@modules/users/repositories/IUsersRepository';
 import UsersRepository from '@modules/users/infra/typeorm/repositories/UsersRepository';
 
-import ITweetRepository from '@modules/tweet/repositories/ITweetRepository';
-import TweetRepository from '@modules/tweet/infra/typeorm/repositories/TweetRepository';
+import ITweetRepository from '@modules/tweets/repositories/ITweetsRepository';
+import TweetRepository from '@modules/tweets/infra/typeorm/repositories/TweetsRepository';
 
 container.registerSingleton<IUsersRepository>(
   'UsersRepository',

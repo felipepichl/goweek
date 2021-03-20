@@ -1,6 +1,6 @@
 import { ObjectID } from 'mongodb';
 
-import FakeTweetRepository from '../repositories/fakes/FakeTweetRepository';
+import FakeTweetRepository from '../repositories/fakes/FakeTweetsRepository';
 import CreateTweetService from './CreateTweetService';
 
 let fakeTweetRepository: FakeTweetRepository;

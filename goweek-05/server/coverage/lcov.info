@@ -1,5 +1,5 @@
 TN:
-SF:src/modules/tweet/services/CreateTweetService.ts
+SF:src/modules/tweets/services/CreateTweetService.ts
 FN:14,(anonymous_4)
 FN:19,(anonymous_5)
 FNF:2
@@ -9,11 +9,10 @@ FNDA:1,(anonymous_5)
 DA:2,1
 DA:13,1
 DA:16,1
-DA:20,1
 DA:22,1
 DA:26,1
-LF:6
-LH:6
+LF:5
+LH:5
 BRF:0
 BRH:0
 end_of_record
