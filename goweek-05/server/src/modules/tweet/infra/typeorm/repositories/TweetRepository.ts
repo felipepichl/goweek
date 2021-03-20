@@ -5,7 +5,7 @@ import ITweetRepository from '@modules/tweet/repositories/ITweetRepository';
 
 import ICreateTweetDTO from '@modules/tweet/dtos/ICreateTweetDTO';
 
-class FakeTweetRepository implements ITweetRepository {
+class TweetRepository implements ITweetRepository {
   private ormRepository: MongoRepository<Tweet>;
 
   constructor() {
@@ -21,4 +21,4 @@ class FakeTweetRepository implements ITweetRepository {
   }
 }
 
-export default FakeTweetRepository;
+export default TweetRepository;
