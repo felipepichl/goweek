@@ -2,7 +2,8 @@ import 'reflect-metadata';
 
 import express, { Request, Response, NextFunction } from 'express';
 
-import '@shared/infra/typeorm/connection';
+import '@shared/infra/typeorm';
+import '@shared/container';
 
 import AppError from '@shared/errors/AppError';
 import routes from '@shared/infra/http/routes';

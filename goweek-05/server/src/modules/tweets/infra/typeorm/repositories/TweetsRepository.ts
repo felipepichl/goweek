@@ -1,7 +1,7 @@
 import { getMongoRepository, MongoRepository } from 'typeorm';
 
-import Tweet from '@modules/tweets/infra/typeorm/schema/Tweet';
-import ITweetRepository from '@modules/tweets/repositories/ITweetRepository';
+import Tweet from '@modules/tweets/infra/typeorm/schemas/Tweet';
+import ITweetRepository from '@modules/tweets/repositories/ITweetsRepository';
 
 import ICreateTweetDTO from '@modules/tweets/dtos/ICreateTweetDTO';
 

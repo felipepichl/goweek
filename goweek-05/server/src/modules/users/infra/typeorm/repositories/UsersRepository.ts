@@ -1,7 +1,7 @@
 import { ObjectID } from 'mongodb';
 import { getMongoRepository, MongoRepository } from 'typeorm';
 
-import User from '@modules/users/infra/typeorm/schema/User';
+import User from '@modules/users/infra/typeorm/schemas/User';
 import IUsersRepository from '@modules/users/repositories/IUsersRepository';
 
 import ICreateUserDTO from '@modules/users/dtos/ICreateUserDTO';
@@ -10,7 +10,7 @@ class UsersRepository implements IUsersRepository {
   private ormRepository: MongoRepository<User>;
 
   constructor() {
-    this.ormRepository = getMongoRepository(User, 'mongo');
+    this.ormRepository = getMongoRepository(User);
   }
 
   public async create({

@@ -3,7 +3,7 @@ import { injectable, inject } from 'tsyringe';
 
 import IUserRepository from '@modules/users/repositories/IUsersRepository';
 
-import Tweet from '../infra/typeorm/schema/Tweet';
+import Tweet from '../infra/typeorm/schemas/Tweet';
 import ITweetRepository from '../repositories/ITweetsRepository';
 
 interface IRequest {

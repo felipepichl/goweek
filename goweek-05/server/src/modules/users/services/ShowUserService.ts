@@ -1,7 +1,7 @@
 import { ObjectID } from 'mongodb';
 import { injectable, inject } from 'tsyringe';
 
-import User from '../infra/typeorm/schema/User';
+import User from '../infra/typeorm/schemas/User';
 import IUsersRepository from '../repositories/IUsersRepository';
 
 interface IRequest {

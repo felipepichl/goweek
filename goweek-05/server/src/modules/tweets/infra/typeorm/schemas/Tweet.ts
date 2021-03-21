@@ -7,7 +7,7 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
-import User from '@modules/users/infra/typeorm/schema/User';
+import User from '@modules/users/infra/typeorm/schemas/User';
 
 @Entity('tweets')
 class Tweet {

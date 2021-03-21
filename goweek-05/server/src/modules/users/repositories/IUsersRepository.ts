@@ -1,7 +1,7 @@
 import { ObjectID } from 'mongodb';
 
 import ICreateUserDTO from '../dtos/ICreateUserDTO';
-import User from '../infra/typeorm/schema/User';
+import User from '../infra/typeorm/schemas/User';
 
 interface IUsersRepository {
   create(data: ICreateUserDTO): Promise<User>;

@@ -15,9 +15,6 @@ describe('CreateUser', () => {
   it('should be able to create a new user', async () => {
     const user = await createUsers.execute({
       login: 'johndue',
-      name: 'John Due',
-      bio: 'John Due bio',
-      avatar_url: 'http://example.com/avatar_url',
     });
 
     expect(user).toHaveProperty('id');

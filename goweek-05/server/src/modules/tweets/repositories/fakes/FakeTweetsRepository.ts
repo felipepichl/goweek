@@ -2,7 +2,7 @@ import { ObjectID } from 'mongodb';
 
 import ICreateTweetDTO from '@modules/tweets/dtos/ICreateTweetDTO';
 
-import Tweet from '@modules/tweets/infra/typeorm/schema/Tweet';
+import Tweet from '@modules/tweets/infra/typeorm/schemas/Tweet';
 import ITweetRepository from '../ITweetsRepository';
 
 class FakeTweetsRepository implements ITweetRepository {

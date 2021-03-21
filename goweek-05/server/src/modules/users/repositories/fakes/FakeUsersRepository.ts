@@ -2,7 +2,7 @@ import { ObjectID } from 'mongodb';
 
 import ICreateUserDTO from '@modules/users/dtos/ICreateUserDTO';
 
-import User from '@modules/users/infra/typeorm/schema/User';
+import User from '@modules/users/infra/typeorm/schemas/User';
 import IUsersRepository from '../IUsersRepository';
 
 class FakeUsersRepository implements IUsersRepository {
