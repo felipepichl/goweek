@@ -1,7 +1,7 @@
-import api from 'services/api';
 import { injectable, inject } from 'tsyringe';
 
-// import AppError from '@shared/errors/AppError';
+import AppError from '@shared/errors/AppError';
+import IGutHubProvider from '../providers/GitHubProvider/models/IGitHubProvider';
 
 import User from '../infra/typeorm/schemas/User';
 import IUsersRepository from '../repositories/IUsersRepository';
@@ -15,16 +15,19 @@ class CreateUserService {
   constructor(
     @inject('UsersRepository')
     private usersRepository: IUsersRepository,
+
+    @inject('GitHubProvider')
+    private gitHubProvider: IGutHubProvider,
   ) {}
 
   public async execute({ login }: IRequest): Promise<User> {
-    const apiResponse = await api.get(`/${login}`);
+    const userGitHub = await this.gitHubProvider.findUser(login);
 
-    const { name, bio, avatar_url } = apiResponse.data;
+    if (!userGitHub) {
+      throw new AppError('Incorrect email/password combination', 401);
+    }
 
-    // if (!apiResponse.data) {
-    //   throw new AppError('Incorrect email/password combination', 401);
-    // }
+    const { name, bio, avatar_url } = userGitHub;
 
     const user = await this.usersRepository.create({
       login,

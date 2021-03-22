@@ -1,8 +1,8 @@
-interface IUserDTO {
+interface IUserGithubDTO {
   login: string;
   name: string;
   bio: string;
   avatar_url: string;
 }
 
-export default IUserDTO;
+export default IUserGithubDTO;

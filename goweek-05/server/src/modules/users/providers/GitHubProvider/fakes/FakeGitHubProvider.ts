@@ -5,7 +5,16 @@ class FakeGitHubProvider implements IGitHubProvider {
   private users: IUserGitHubDTO[] = [];
 
   public async findUser(login: string): Promise<IUserGitHubDTO> {
-    const findUser = this.users.find(user => user.login === login);
+    const userGitHubFake = {
+      login: 'johndue',
+      name: 'John Due',
+      bio: 'Fake bio',
+      avatar_url: 'http://example.com',
+    };
+
+    this.users.push(userGitHubFake);
+
+    const findUser = this.users.find(() => login);
 
     return findUser;
   }
