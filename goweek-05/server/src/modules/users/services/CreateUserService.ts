@@ -24,10 +24,16 @@ class CreateUserService {
     const userGitHub = await this.gitHubProvider.findUser(login);
 
     if (!userGitHub) {
-      throw new AppError('Incorrect email/password combination', 401);
+      throw new AppError('User do not found in GitHub', 401);
     }
 
     const { name, bio, avatar_url } = userGitHub;
+
+    const userInMongo = await this.usersRepository.findByName(name);
+
+    if (userInMongo) {
+      return userInMongo;
+    }
 
     const user = await this.usersRepository.create({
       login,

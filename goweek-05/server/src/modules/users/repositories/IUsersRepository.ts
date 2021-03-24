@@ -6,6 +6,7 @@ import User from '../infra/typeorm/schemas/User';
 interface IUsersRepository {
   create(data: ICreateUserDTO): Promise<User>;
   findById(user_id: ObjectID): Promise<User>;
+  findByName(name: string): Promise<User>;
 }
 
 export default IUsersRepository;
