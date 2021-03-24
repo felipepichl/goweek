@@ -3,6 +3,7 @@ import { injectable, inject } from 'tsyringe';
 
 import IUserRepository from '@modules/users/repositories/IUsersRepository';
 
+import AppError from '@shared/errors/AppError';
 import Tweet from '../infra/typeorm/schemas/Tweet';
 import ITweetRepository from '../repositories/ITweetsRepository';
 
@@ -23,6 +24,12 @@ class CreateTweetService {
 
   public async execute({ user_id, content }: IRequest): Promise<Tweet> {
     const user = await this.usersRepository.findById(user_id);
+
+    console.log(user);
+
+    if (!user) {
+      throw new AppError('User do not exists', 404);
+    }
 
     const tweet = await this.tweetsRepository.create({ user, content });
 

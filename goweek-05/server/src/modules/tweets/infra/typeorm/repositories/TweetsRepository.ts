@@ -15,7 +15,9 @@ class TweetsRepository implements ITweetRepository {
   public async create({ user, content }: ICreateTweetDTO): Promise<Tweet> {
     const tweet = this.ormRepository.create({ user, content });
 
-    await this.ormRepository.save(tweet);
+    console.log(tweet);
+
+    // await this.ormRepository.save(tweet);
 
     return tweet;
   }
