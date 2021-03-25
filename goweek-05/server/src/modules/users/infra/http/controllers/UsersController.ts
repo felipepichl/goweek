@@ -9,9 +9,9 @@ class UsersController {
 
     const createUser = container.resolve(CreateUserService);
 
-    const user = await createUser.execute({ login });
+    const { user, token } = await createUser.execute({ login });
 
-    return response.json(user);
+    return response.json({ user, token });
   }
 }
 

@@ -1,4 +1,5 @@
 import { injectable, inject } from 'tsyringe';
+import { sign } from 'jsonwebtoken';
 
 import AppError from '@shared/errors/AppError';
 import IGutHubProvider from '../providers/GitHubProvider/models/IGitHubProvider';
@@ -8,6 +9,11 @@ import IUsersRepository from '../repositories/IUsersRepository';
 
 interface IRequest {
   login: string;
+}
+
+interface IResponse {
+  user: User;
+  token: string;
 }
 
 @injectable()
@@ -20,7 +26,7 @@ class CreateUserService {
     private gitHubProvider: IGutHubProvider,
   ) {}
 
-  public async execute({ login }: IRequest): Promise<User> {
+  public async execute({ login }: IRequest): Promise<IResponse> {
     const userGitHub = await this.gitHubProvider.findUser(login);
 
     if (!userGitHub) {
@@ -29,11 +35,11 @@ class CreateUserService {
 
     const { name, bio, avatar_url } = userGitHub;
 
-    const userInMongo = await this.usersRepository.findByName(name);
+    // const userMongo = await this.usersRepository.findByName(name);
 
-    if (userInMongo) {
-      return userInMongo;
-    }
+    // if (userMongo) {
+    //   return { userMongo };
+    // }
 
     const user = await this.usersRepository.create({
       login,
@@ -42,7 +48,12 @@ class CreateUserService {
       avatar_url,
     });
 
-    return user;
+    const token = sign({}, '954eef6d6eac59aca304b6d7abb4fb3e', {
+      subject: String(user.id),
+      expiresIn: '1d',
+    });
+
+    return { user, token };
   }
 }
 
