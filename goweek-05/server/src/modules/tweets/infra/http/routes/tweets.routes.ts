@@ -1,13 +1,13 @@
-import { application, Router } from 'express';
+import { Router } from 'express';
 import ensureAuthenticated from '@modules/users/infra/http/middlewares/ensureAuthenticated';
 
 import TweetsController from '../controllers/TweetsController';
 
-const usersRouter = Router();
+const tweetsRouter = Router();
 const tweetsController = new TweetsController();
 
-application.use(ensureAuthenticated);
+tweetsRouter.use(ensureAuthenticated);
 
-usersRouter.post('/', tweetsController.create);
+tweetsRouter.post('/', tweetsController.create);
 
-export default usersRouter;
+export default tweetsRouter;

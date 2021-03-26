@@ -1,10 +1,8 @@
 import { injectable, inject } from 'tsyringe';
-import { sign } from 'jsonwebtoken';
-
-import auth from '@config/auth';
 
 import AppError from '@shared/errors/AppError';
 import IGutHubProvider from '../providers/GitHubProvider/models/IGitHubProvider';
+import IJwtTokenProvider from '../providers/JwtTokenProvider/models/IJwtTokenProvider';
 
 import User from '../infra/typeorm/schemas/User';
 import IUsersRepository from '../repositories/IUsersRepository';
@@ -26,6 +24,9 @@ class CreateUserService {
 
     @inject('GitHubProvider')
     private gitHubProvider: IGutHubProvider,
+
+    @inject('JwtTokenProvider')
+    private jwtTokenProvider: IJwtTokenProvider,
   ) {}
 
   public async execute({ login }: IRequest): Promise<IResponse> {
@@ -36,12 +37,15 @@ class CreateUserService {
     }
 
     const { name, bio, avatar_url } = userGitHub;
+    let token: string;
 
-    // const userMongo = await this.usersRepository.findByName(name);
+    const userMongo = await this.usersRepository.findByName(name);
 
-    // if (userMongo) {
-    //   return { userMongo };
-    // }
+    token = await this.jwtTokenProvider.tokenGenerate(String(userMongo.id));
+
+    if (userMongo) {
+      return { user: userMongo, token };
+    }
 
     const user = await this.usersRepository.create({
       login,
@@ -50,12 +54,7 @@ class CreateUserService {
       avatar_url,
     });
 
-    const { secret, expiresIn } = auth.jwt;
-
-    const token = sign({}, secret, {
-      subject: String(user.id),
-      expiresIn,
-    });
+    token = await this.jwtTokenProvider.tokenGenerate(String(user.id));
 
     return { user, token };
   }

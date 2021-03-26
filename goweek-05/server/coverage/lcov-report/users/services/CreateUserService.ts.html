@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">87.5% </span>
+                <span class="strong">68.42% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>14/16</span>
+                <span class='fraction'>13/19</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">25% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>2/4</span>
+                <span class='fraction'>1/4</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">86.67% </span>
+                <span class="strong">66.67% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>13/15</span>
+                <span class='fraction'>12/18</span>
             </div>
         
             
@@ -55,7 +55,7 @@
             Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
         </p>
     </div>
-    <div class='status-line high'></div>
+    <div class='status-line medium'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -106,7 +106,21 @@
 <a name='L47'></a><a href='#L47'>47</a>
 <a name='L48'></a><a href='#L48'>48</a>
 <a name='L49'></a><a href='#L49'>49</a>
-<a name='L50'></a><a href='#L50'>50</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -117,6 +131,15 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -137,20 +160,25 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -159,12 +187,18 @@
 &nbsp;
 import AppError from '@shared/errors/AppError';
 import IGutHubProvider from '../providers/GitHubProvider/models/IGitHubProvider';
+import IJwtTokenProvider from '../providers/JwtTokenProvider/models/IJwtTokenProvider';
 &nbsp;
 import User from '../infra/typeorm/schemas/User';
 import IUsersRepository from '../repositories/IUsersRepository';
 &nbsp;
 interface IRequest {
   login: string;
+}
+&nbsp;
+interface IResponse {
+  user: User;
+  token: string;
 }
 &nbsp;
 @injectable()
@@ -175,31 +209,39 @@ class CreateUserService {
 &nbsp;
     @inject('GitHubProvider')
     private gitHubProvider: IGutHubProvider,
+&nbsp;
+    @inject('JwtTokenProvider')
+    private jwtTokenProvider: IJwtTokenProvider,
   ) {}
 &nbsp;
-  public async execute({ login }: IRequest): Promise&lt;User&gt; {
+  public async execute({ login }: IRequest): Promise&lt;IResponse&gt; {
     const userGitHub = await this.gitHubProvider.findUser(login);
 &nbsp;
     <span class="missing-if-branch" title="if path not taken" >I</span>if (!userGitHub) {
-<span class="cstat-no" title="statement not covered" >      throw new AppError('Incorrect email/password combination', 401);</span>
+<span class="cstat-no" title="statement not covered" >      throw new AppError('User do not found in GitHub', 401);</span>
     }
 &nbsp;
     const { name, bio, avatar_url } = userGitHub;
+    let token: string;
 &nbsp;
-    const userInMongo = await this.usersRepository.findByName(name);
+    const userMongo = await this.usersRepository.findByName(name);
 &nbsp;
-    <span class="missing-if-branch" title="if path not taken" >I</span>if (userInMongo) {
-<span class="cstat-no" title="statement not covered" >      return userInMongo;</span>
+    token = await this.jwtTokenProvider.tokenGenerate(String(userMongo.id));
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    if (userMongo) {</span>
+<span class="cstat-no" title="statement not covered" >      return { user: userMongo, token };</span>
     }
 &nbsp;
-    const user = await this.usersRepository.create({
+    const user = <span class="cstat-no" title="statement not covered" >await this.usersRepository.create({</span>
       login,
       name,
       bio,
       avatar_url,
     });
 &nbsp;
-    return user;
+<span class="cstat-no" title="statement not covered" >    token = await this.jwtTokenProvider.tokenGenerate(String(user.id));</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    return { user, token };</span>
   }
 }
 &nbsp;
@@ -211,7 +253,7 @@ export default CreateUserService;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Wed Mar 24 2021 16:33:55 GMT-0300 (Brasilia Standard Time)
+                at Fri Mar 26 2021 12:21:54 GMT-0300 (Brasilia Standard Time)
             </div>
         </div>
         <script src="../../prettify.js"></script>
