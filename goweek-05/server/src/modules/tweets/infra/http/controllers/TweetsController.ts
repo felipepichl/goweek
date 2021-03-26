@@ -5,7 +5,9 @@ import CreateTweetService from '@modules/tweets/services/CreateTweetService';
 
 class TweetsController {
   public async create(request: Request, response: Response): Promise<Response> {
-    const { user_id, content } = request.body;
+    const { content } = request.body;
+
+    const user_id = request.user.id;
 
     const createTweet = container.resolve(CreateTweetService);
 

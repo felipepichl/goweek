@@ -24,10 +24,10 @@ describe('CreateUser', () => {
   });
 
   it('should be able to create a new user', async () => {
-    const user = await createUsers.execute({
+    const userGitHub = await createUsers.execute({
       login: 'johndue',
     });
 
-    expect(user).toHaveProperty('id');
+    expect(userGitHub.user).toHaveProperty('id');
   });
 });

@@ -41,9 +41,9 @@ class CreateUserService {
 
     const userMongo = await this.usersRepository.findByName(name);
 
-    token = await this.jwtTokenProvider.tokenGenerate(String(userMongo.id));
-
     if (userMongo) {
+      token = await this.jwtTokenProvider.tokenGenerate(String(userMongo.id));
+
       return { user: userMongo, token };
     }
 

@@ -8,7 +8,7 @@ import Tweet from '../infra/typeorm/schemas/Tweet';
 import ITweetRepository from '../repositories/ITweetsRepository';
 
 interface IRequest {
-  user_id: ObjectID;
+  user_id: string;
   content: string;
 }
 
@@ -23,7 +23,7 @@ class CreateTweetService {
   ) {}
 
   public async execute({ user_id, content }: IRequest): Promise<Tweet> {
-    const user = await this.usersRepository.findById(user_id);
+    const user = await this.usersRepository.findById(new ObjectID(user_id));
 
     if (!user) {
       throw new AppError('User do not exists', 404);
