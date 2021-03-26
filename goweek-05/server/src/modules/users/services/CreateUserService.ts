@@ -1,6 +1,8 @@
 import { injectable, inject } from 'tsyringe';
 import { sign } from 'jsonwebtoken';
 
+import auth from '@config/auth';
+
 import AppError from '@shared/errors/AppError';
 import IGutHubProvider from '../providers/GitHubProvider/models/IGitHubProvider';
 
@@ -48,9 +50,11 @@ class CreateUserService {
       avatar_url,
     });
 
-    const token = sign({}, '954eef6d6eac59aca304b6d7abb4fb3e', {
+    const { secret, expiresIn } = auth.jwt;
+
+    const token = sign({}, secret, {
       subject: String(user.id),
-      expiresIn: '1d',
+      expiresIn,
     });
 
     return { user, token };
