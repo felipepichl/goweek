@@ -30,4 +30,12 @@ describe('CreateUser', () => {
 
     expect(userGitHub.user).toHaveProperty('id');
   });
+
+  // it('should not be able to create a user with same login from another', async () => {
+  //   const userGitHub = await createUsers.execute({
+  //     login: 'johndue',
+  //   });
+
+  //   expect(userGitHub.user).toHaveProperty('id');
+  // });
 });

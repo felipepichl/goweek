@@ -8,7 +8,7 @@ import Tweet from '../infra/typeorm/schemas/Tweet';
 import ITweetRepository from '../repositories/ITweetsRepository';
 
 interface IRequest {
-  user_id: string;
+  user_id: string | ObjectID;
   content: string;
 }
 
