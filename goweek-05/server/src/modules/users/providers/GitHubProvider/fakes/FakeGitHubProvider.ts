@@ -14,7 +14,7 @@ class FakeGitHubProvider implements IGitHubProvider {
 
     this.users.push(userGitHubFake);
 
-    const findUser = this.users.find(() => login);
+    const findUser = this.users.find(user => user.login === login);
 
     return findUser;
   }

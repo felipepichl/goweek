@@ -1,3 +1,6 @@
+import { ObjectID } from 'mongodb';
+import AppError from '@shared/errors/AppError';
+
 import FakeUserRepository from '@modules/users/repositories/fakes/FakeUsersRepository';
 
 import FakeTweetRepository from '../repositories/fakes/FakeTweetsRepository';
@@ -33,5 +36,14 @@ describe('CreateTweet', () => {
     });
 
     expect(tweet).toHaveProperty('id');
+  });
+
+  it('should not be able to create a new tweet without user', async () => {
+    await expect(
+      createTweet.execute({
+        user_id: new ObjectID(),
+        content: 'content',
+      }),
+    ).rejects.toBeInstanceOf(AppError);
   });
 });

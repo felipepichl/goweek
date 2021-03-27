@@ -1,3 +1,5 @@
+import AppError from '@shared/errors/AppError';
+
 import FakeGitHubProvider from '@modules/users/providers/GitHubProvider/fakes/FakeGitHubProvider';
 import FakeJwtTokenProvider from '@modules/users/providers/JwtTokenProvider/fakes/FakeJwtTokenProvider';
 
@@ -8,7 +10,7 @@ let fakeUsersRepository: FakeUsersRepository;
 let fakeGitHubProvider: FakeGitHubProvider;
 let fakeJwtTokenProvider: FakeJwtTokenProvider;
 
-let createUsers: CreateUserService;
+let createUser: CreateUserService;
 
 describe('CreateUser', () => {
   beforeEach(() => {
@@ -16,7 +18,7 @@ describe('CreateUser', () => {
     fakeGitHubProvider = new FakeGitHubProvider();
     fakeJwtTokenProvider = new FakeJwtTokenProvider();
 
-    createUsers = new CreateUserService(
+    createUser = new CreateUserService(
       fakeUsersRepository,
       fakeGitHubProvider,
       fakeJwtTokenProvider,
@@ -24,18 +26,38 @@ describe('CreateUser', () => {
   });
 
   it('should be able to create a new user', async () => {
-    const userGitHub = await createUsers.execute({
+    const userGitHub = await createUser.execute({
       login: 'johndue',
     });
 
     expect(userGitHub.user).toHaveProperty('id');
   });
 
-  // it('should not be able to create a user with same login from another', async () => {
-  //   const userGitHub = await createUsers.execute({
-  //     login: 'johndue',
-  //   });
+  it('should not be able to create a new user then nonexistent in GitHub', async () => {
+    createUser = new CreateUserService(
+      fakeUsersRepository,
+      fakeGitHubProvider,
+      fakeJwtTokenProvider,
+    );
 
-  //   expect(userGitHub.user).toHaveProperty('id');
-  // });
+    await expect(
+      createUser.execute({ login: 'nonexistent' }),
+    ).rejects.toBeInstanceOf(AppError);
+  });
+
+  it('should not be able to create a new user with same login from another', async () => {
+    const userGitHub = await createUser.execute({
+      login: 'johndue',
+    });
+
+    await createUser.execute({
+      login: 'johndue',
+    });
+
+    const { name } = userGitHub.user;
+
+    const userMongo = await fakeUsersRepository.findByName(name);
+
+    expect(userMongo).toHaveProperty('id');
+  });
 });
