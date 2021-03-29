@@ -1,12 +1,15 @@
 import { registerRootComponent } from 'expo';
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, StatusBar } from 'react-native';
 
 const App: React.FC = () => {
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Hello World</Text>
-    </View>
+    <>
+      <StatusBar barStyle="light-content" />
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <Text>Hello World</Text>
+      </View>
+    </>
   );
 };
 
