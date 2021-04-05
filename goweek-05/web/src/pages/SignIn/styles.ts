@@ -3,18 +3,20 @@ import { shade } from 'polished';
 
 export const Container = styled.div`
   height: 100vh;
+
   display: flex;
 
-  flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
+  padding: 15px;
+`;
 
+export const Content = styled.div`
+  max-width: 380px;
   width: 100%;
 
   form {
-    margin: 80px 0;
-
-    width: 340px;
+    margin: 20px 0;
     text-align: left;
 
     h1 {
@@ -38,7 +40,7 @@ export const Container = styled.div`
       width: 100%;
       color: #fff;
       font-weight: 500;
-      margin-top: 16px;
+      margin-top: 24px;
       transition: background-color 0.2s;
 
       &:hover {
@@ -46,4 +48,12 @@ export const Container = styled.div`
       }
     }
   }
+`;
+
+export const ImageContainer = styled.div`
+  width: 100%;
+  height: 40px;
+
+  display: flex;
+  justify-content: left;
 `;
