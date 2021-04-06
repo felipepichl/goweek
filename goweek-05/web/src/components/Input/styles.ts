@@ -10,9 +10,19 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
 
+  color: #666360;
+
   input {
     flex: 1;
     background: transparent;
     border: 0;
+
+    &::placeholder {
+      color: #666360;
+    }
+  }
+
+  svg {
+    margin-right: 16px;
   }
 `;

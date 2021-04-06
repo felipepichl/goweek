@@ -23,7 +23,7 @@ const SignIn: React.FC = () => {
         <Form onSubmit={handleSubmit}>
           <h1>Log in to Twitter</h1>
 
-          <Input name="login" icon={FiGithub} placeholder="GitHub user" />
+          <Input name="login" icon={FiGithub} placeholder="GitHub login" />
 
           <button type="submit">Log in</button>
         </Form>
