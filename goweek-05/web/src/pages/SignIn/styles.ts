@@ -24,13 +24,13 @@ export const Content = styled.div`
       font-family: 'Open Sans', sans-serif;
     }
 
-    input {
+    /* input {
       background: #fff;
       border: 1px solid rgb(196, 207, 214);
       border-radius: 4px;
       padding: 18px;
       width: 100%;
-    }
+    } */
 
     button {
       background: #4bb0ee;
