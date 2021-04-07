@@ -3,6 +3,7 @@ import { FiGithub } from 'react-icons/fi';
 import { FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
 import * as Yup from 'yup';
+import getValidationErros from '../../utils/getValidationErrors';
 
 import logo from '../../assets/logo.svg';
 
@@ -14,6 +15,8 @@ const SignIn: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
 
   const handleSubmit = useCallback(async (data: object) => {
+    formRef.current?.setErrors({});
+
     try {
       const schema = Yup.object().shape({
         login: Yup.string()
@@ -23,10 +26,10 @@ const SignIn: React.FC = () => {
       });
 
       await schema.validate(data, { abortEarly: false });
-
-      console.log(data);
     } catch (error) {
-      console.log(error);
+      const errors = getValidationErros(error);
+
+      formRef.current?.setErrors(errors);
     }
   }, []);
 
