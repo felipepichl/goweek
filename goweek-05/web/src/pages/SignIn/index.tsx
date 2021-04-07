@@ -1,6 +1,7 @@
-import React from 'react';
-import { Form } from '@unform/web';
+import React, { useCallback } from 'react';
 import { FiGithub } from 'react-icons/fi';
+import { Form } from '@unform/web';
+import * as Yup from 'yup';
 
 import logo from '../../assets/logo.svg';
 
@@ -9,9 +10,22 @@ import Input from '../../components/Input';
 import { Container, Content, ImageContainer } from './styles';
 
 const SignIn: React.FC = () => {
-  function handleSubmit(data: object): void {
-    console.log(data);
-  }
+  const handleSubmit = useCallback(async (data: object) => {
+    try {
+      const schema = Yup.object().shape({
+        login: Yup.string()
+          .required('Login do GitHub é obrigatório')
+          .lowercase('Apenas letras minúsculas')
+          .strict(),
+      });
+
+      await schema.validate(data, { abortEarly: false });
+
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
 
   return (
     <Container>
