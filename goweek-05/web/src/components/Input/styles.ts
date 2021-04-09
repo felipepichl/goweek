@@ -24,6 +24,7 @@ export const Container = styled.div<ContainerProps>`
     props.isErrored &&
     css`
       border: 2px solid #c53030;
+      color: #c53030;
     `}
 
   ${props =>
