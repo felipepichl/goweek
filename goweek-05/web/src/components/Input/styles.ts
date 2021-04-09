@@ -23,7 +23,7 @@ export const Container = styled.div<ContainerProps>`
   ${props =>
     props.isErrored &&
     css`
-      border-color: #c53030;
+      border: 2px solid #c53030;
     `}
 
   ${props =>
@@ -63,11 +63,17 @@ export const Container = styled.div<ContainerProps>`
   }
 `;
 
-export const Error = styled(Tooltip)`
-  height: 20px;
-  margin-left: 16px;
+// export const Error = styled(Tooltip)`
+//   height: 20px;
+//   margin-left: 16px;
 
-  svg {
-    margin: 0;
-  }
+//   svg {
+//     margin: 0;
+//   }
+// `;
+
+export const Error = styled.div`
+  color: #c53030;
+  padding: 10px;
+  min-height: 39px;
 `;

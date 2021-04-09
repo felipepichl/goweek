@@ -40,7 +40,7 @@ export const Content = styled.div`
       width: 100%;
       color: #fff;
       font-weight: 500;
-      margin-top: 24px;
+      //margin-top: 18px;
       transition: background-color 0.2s;
 
       &:hover {

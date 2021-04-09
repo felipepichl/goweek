@@ -43,22 +43,25 @@ const Input: React.FC<InputProps> = ({ name, icon: Icon, ...rest }) => {
   }, [fieldName, registerField]);
 
   return (
-    <Container isErrored={!!error} isFilled={isFilled} isFocused={isFocused}>
-      {Icon && <Icon size={20} />}
-      <input
-        onFocus={handleInputFocus}
-        onBlur={handleInputBlur}
-        defaultValue={defaultValue}
-        ref={inputRef}
-        {...rest}
-      />
+    <>
+      <Container isErrored={!!error} isFilled={isFilled} isFocused={isFocused}>
+        {Icon && <Icon size={20} />}
+        <input
+          onFocus={handleInputFocus}
+          onBlur={handleInputBlur}
+          defaultValue={defaultValue}
+          ref={inputRef}
+          {...rest}
+        />
 
-      {error && (
+        {/* {error && (
         <Error title={error}>
-          <FiAlertCircle color="#c53030" size={20} />
+        <FiAlertCircle color="#c53030" size={20} />
         </Error>
-      )}
-    </Container>
+      )} */}
+      </Container>
+      <Error title={error}>{error}</Error>
+    </>
   );
 };
 
