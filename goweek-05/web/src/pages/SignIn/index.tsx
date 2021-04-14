@@ -4,7 +4,7 @@ import { FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
 import * as Yup from 'yup';
 
-import AuthContext from '../../context/AuthContext';
+import { AuthContext } from '../../context/AuthContext';
 import getValidationErros from '../../utils/getValidationErrors';
 
 import logo from '../../assets/logo.svg';
@@ -13,29 +13,40 @@ import Input from '../../components/Input';
 
 import { Container, Content, ImageContainer } from './styles';
 
+interface ISignInFormData {
+  login: string;
+}
+
 const SignIn: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
 
-  const auth = useContext(AuthContext);
+  const { signIn } = useContext(AuthContext);
 
-  const handleSubmit = useCallback(async (data: object) => {
-    formRef.current?.setErrors({});
+  const handleSubmit = useCallback(
+    async (data: ISignInFormData) => {
+      formRef.current?.setErrors({});
 
-    try {
-      const schema = Yup.object().shape({
-        login: Yup.string()
-          .required('Login do GitHub é obrigatório')
-          .lowercase('Apenas letras minúsculas')
-          .strict(),
-      });
+      try {
+        const schema = Yup.object().shape({
+          login: Yup.string()
+            .required('Login do GitHub é obrigatório')
+            .lowercase('Apenas letras minúsculas')
+            .strict(),
+        });
 
-      await schema.validate(data, { abortEarly: false });
-    } catch (error) {
-      const errors = getValidationErros(error);
+        await schema.validate(data, { abortEarly: false });
 
-      formRef.current?.setErrors(errors);
-    }
-  }, []);
+        signIn({
+          login: data.login,
+        });
+      } catch (error) {
+        const errors = getValidationErros(error);
+
+        formRef.current?.setErrors(errors);
+      }
+    },
+    [signIn],
+  );
 
   return (
     <Container>

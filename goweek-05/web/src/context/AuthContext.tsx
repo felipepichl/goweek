@@ -1,11 +1,31 @@
-import React, { createContext } from 'react';
+import React, { createContext, useCallback } from 'react';
+import api from '../services/api';
+
+interface ISignInCreadetial {
+  login: string;
+}
 
 interface IAuthContextData {
   name: string;
+  signIn(credentials: ISignInCreadetial): Promise<void>;
 }
 
-const AuthContext = createContext<IAuthContextData>({} as IAuthContextData);
+export const AuthContext = createContext<IAuthContextData>(
+  {} as IAuthContextData,
+);
 
-const AuthProvider: React.FC = ({ children }) => {}
+export const AuthProvider: React.FC = ({ children }) => {
+  const signIn = useCallback(async ({ login }) => {
+    const response = await api.post('sessions', {
+      login,
+    });
 
-export default AuthContext;
+    console.log(response.data);
+  }, []);
+
+  return (
+    <AuthContext.Provider value={{ name: 'Felipe', signIn }}>
+      {children}
+    </AuthContext.Provider>
+  );
+};
