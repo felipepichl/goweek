@@ -15,11 +15,9 @@ interface IAuthState {
   user: object;
 }
 
-export const AuthContext = createContext<IAuthContextData>(
-  {} as IAuthContextData,
-);
+const AuthContext = createContext<IAuthContextData>({} as IAuthContextData);
 
-export const AuthProvider: React.FC = ({ children }) => {
+const AuthProvider: React.FC = ({ children }) => {
   const [data, setData] = useState<IAuthState>(() => {
     const token = localStorage.getItem('@GoWeek-05:token');
     const user = localStorage.getItem('@GoWeek-05:user');
@@ -55,6 +53,9 @@ function useAuth(): IAuthContextData {
   const context = useContext(AuthContext);
 
   if (!context) {
-    throw new Error('useAuth must be used within an AuthProvider ');
+    throw new Error('useAuth must be used within an AuthProvider');
   }
+  return context;
 }
+
+export { AuthProvider, useAuth };
