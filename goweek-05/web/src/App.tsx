@@ -4,7 +4,8 @@ import GlobalStyles from './styles/global';
 
 import Routes from './routes';
 
-import { AuthProvider } from './context/AuthContext';
+import ToastContainer from './components/ToastContainer';
+import { AuthProvider } from './hooks/AuthContext';
 
 const App: React.FC = () => {
   return (
@@ -14,6 +15,8 @@ const App: React.FC = () => {
       <AuthProvider>
         <Routes />
       </AuthProvider>
+
+      <ToastContainer />
     </>
   );
 };

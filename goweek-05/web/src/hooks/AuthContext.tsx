@@ -8,6 +8,7 @@ interface ISignInCreadetial {
 interface IAuthContextData {
   user: object;
   signIn(credentials: ISignInCreadetial): Promise<void>;
+  signOut(): void;
 }
 
 interface IAuthState {
@@ -42,8 +43,15 @@ const AuthProvider: React.FC = ({ children }) => {
     setData({ token, user });
   }, []);
 
+  const signOut = useCallback(() => {
+    localStorage.removeItem('@GoWeek-05:token');
+    localStorage.removeItem('@GoWeek-05:user');
+
+    setData({} as IAuthState);
+  }, []);
+
   return (
-    <AuthContext.Provider value={{ user: data.user, signIn }}>
+    <AuthContext.Provider value={{ user: data.user, signIn, signOut }}>
       {children}
     </AuthContext.Provider>
   );
