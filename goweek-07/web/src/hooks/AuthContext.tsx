@@ -1,4 +1,4 @@
-import React, { createContext, useCallback, useState } from 'react';
+import React, { createContext, useCallback, useContext, useState } from 'react';
 import api from '../services/api';
 
 interface ISignInCredetials {
@@ -6,8 +6,9 @@ interface ISignInCredetials {
 }
 
 interface IAuthContextData {
-  user: string;
+  user: object;
   signIn(credentials: ISignInCredetials): Promise<void>;
+  signOut(): void;
 }
 
 interface IAuthState {
@@ -18,21 +19,50 @@ interface IAuthState {
 const AuthContext = createContext<IAuthContextData>({} as IAuthContextData);
 
 const AuthProvider: React.FC = ({ children }) => {
-  // const [data, setData] = useState<IAuthState>(() => {
-  //   const [token, setToken] = useState()
-  // });
+  const [data, setData] = useState<IAuthState>(() => {
+    const user = localStorage.getItem('@GoWeek-07:user');
+    const token = localStorage.getItem('@GoWeek-07:token');
+
+    if (user && token) {
+      return { user: JSON.parse(user), token };
+    }
+
+    return {} as IAuthState;
+  });
 
   const signIn = useCallback(async ({ email }) => {
     const response = await api.post('sessions', { email });
 
     const { user, token } = response.data;
+
+    localStorage.setItem('@GoWeek-07:user', JSON.stringify(user));
+    localStorage.setItem('@GoWeek-07:token', token);
+
+    setData({ user, token });
+  }, []);
+
+  const signOut = useCallback(() => {
+    localStorage.removeItem('@GoWeek-07:user');
+    localStorage.removeItem('@GoWeek-07:token');
+
+    setData({} as IAuthState);
   }, []);
 
   return (
-    <AuthContext.Provider value={{ user: 'Felipe', signIn }}>
+    <AuthContext.Provider value={{ user: data.user, signIn, signOut }}>
       {children}
     </AuthContext.Provider>
   );
 };
 
-export default { AuthProvider };
+function useAuth(): IAuthContextData {
+  const context = useContext(AuthContext);
+
+  if (!context) {
+    throw new Error('useAuth must be used within an AuthProvider');
+  }
+
+  return context;
+}
+
+export { AuthProvider, useAuth };
