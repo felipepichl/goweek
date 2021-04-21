@@ -3,11 +3,15 @@ import { Link } from 'react-router-dom';
 
 import logo from '../../assets/logo.svg';
 
+import Input from '../../components/Input';
+
 const SignIn: React.FC = () => {
   return (
     <>
       <div>
         <img src={logo} alt="Instaclone" />
+
+        <Input name="email" />
       </div>
 
       <footer>

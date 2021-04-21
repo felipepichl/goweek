@@ -16,6 +16,7 @@ export const Wrapper = styled.div`
 export const Content = styled.div`
   width: 100%;
   max-width: 350px;
+
   > div {
     background-color: #fff;
     border: 1px solid #ddd;
@@ -23,9 +24,11 @@ export const Content = styled.div`
     margin: 0 0 10px;
     padding: 20px;
     text-align: center;
+
     @media screen and (max-width: 450px) {
       border: none;
     }
+
     img {
       height: 55px;
       width: 175px;
@@ -42,15 +45,7 @@ export const Content = styled.div`
       display: flex;
       flex-direction: column;
       margin-top: 20px;
-      input {
-        background: #fafafa;
-        border: 1px solid #efefef;
-        border-radius: 3px;
-        height: 44px;
-        padding: 0 15px;
-        color: #262626;
-        margin: 0 0 10px;
-      }
+
       span {
         color: #f64c75;
         align-self: flex-start;
