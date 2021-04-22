@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import logo from '../../assets/logo.svg';
 
 import Input from '../../components/Input';
+import Button from '../../components/Button';
 
 const SignIn: React.FC = () => {
   return (
@@ -12,6 +13,8 @@ const SignIn: React.FC = () => {
         <img src={logo} alt="Instaclone" />
 
         <Input name="email" />
+
+        <Button>Log in</Button>
       </div>
 
       <footer>

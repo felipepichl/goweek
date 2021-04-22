@@ -32,15 +32,17 @@ export const Content = styled.div`
     img {
       height: 55px;
       width: 175px;
-      margin: 20px 0 10px;
+      margin: 20px 0 30px;
     }
-    h2 {
+
+    /* h2 {
       font-weight: 600;
       line-height: 20px;
       font-size: 17px;
       color: #999;
       text-align: center;
-    }
+    } */
+
     form {
       display: flex;
       flex-direction: column;
@@ -51,16 +53,6 @@ export const Content = styled.div`
         align-self: flex-start;
         margin: 0 0 10px;
         font-weight: bold;
-      }
-      button {
-        margin: 5px 0 0;
-        height: 44px;
-        background: #3897f0;
-        font-weight: bold;
-        color: #fff;
-        border: 1px solid transparent;
-        border-radius: 4px;
-        font-size: 16px;
       }
     }
   }
