@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { Link } from 'react-router-dom';
+import { Form } from '@unform/web';
 
 import logo from '../../assets/logo.svg';
 
@@ -8,16 +9,26 @@ import Button from '../../components/Button';
 
 import { AnimationContainer } from './styles';
 
+interface ISignFormData {
+  email: string;
+}
+
 const SignIn: React.FC = () => {
+  const handleSubmit = useCallback(async (data: ISignFormData) => {
+    console.log(data.email);
+  }, []);
+
   return (
     <>
       <AnimationContainer>
         <div>
-          <img src={logo} alt="Instaclone" />
+          <Form onSubmit={handleSubmit}>
+            <img src={logo} alt="Instaclone" />
 
-          <Input name="email" placeholder="Email" />
+            <Input name="email" placeholder="Email" />
 
-          <Button>Log in</Button>
+            <Button type="submit">Log in</Button>
+          </Form>
         </div>
       </AnimationContainer>
 
