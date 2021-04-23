@@ -35,16 +35,7 @@ export const Content = styled.div`
       margin: 20px 0 30px;
     }
 
-    h2 {
-      font-weight: 600;
-      line-height: 20px;
-      font-size: 17px;
-      color: #999;
-      text-align: center;
-      margin-bottom: 20px;
-    }
-
-    form {
+    /* form {
       display: flex;
       flex-direction: column;
       margin-top: 20px;
@@ -55,7 +46,7 @@ export const Content = styled.div`
         margin: 0 0 10px;
         font-weight: bold;
       }
-    }
+    } */
   }
   footer {
     background-color: #fff;
@@ -63,9 +54,11 @@ export const Content = styled.div`
     border-radius: 1px;
     margin: 0 0 10px;
     padding: 20px;
+
     @media screen and (max-width: 450px) {
       border: none;
     }
+
     p {
       color: #262626;
       font-size: 14px;

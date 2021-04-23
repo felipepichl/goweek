@@ -6,26 +6,32 @@ import logo from '../../assets/logo.svg';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 
+import { AnimationContainer } from './styles';
+
 const SignUp: React.FC = () => {
   return (
     <>
-      <div>
-        <img src={logo} alt="Intaclone" />
+      <AnimationContainer>
+        <div>
+          <img src={logo} alt="Intaclone" />
 
-        <h2>Sign up to see photos and videos from your friends.</h2>
+          <h2>Sign up to see photos and videos from your friends.</h2>
 
-        <Input name="email" placeholder="Email" />
-        <Input name="fullname" placeholder="Fullname" />
-        <Input name="username" placeholder="Username" />
+          <Input name="email" placeholder="Email" />
+          <Input name="fullname" placeholder="Fullname" />
+          <Input name="username" placeholder="Username" />
 
-        <Button>Sign up</Button>
-      </div>
+          <Button>Sign up</Button>
+        </div>
+      </AnimationContainer>
 
       <footer>
-        <p>
-          Have an account?
-          <Link to="/"> Log in</Link>
-        </p>
+        <AnimationContainer>
+          <p>
+            Have an account?
+            <Link to="/"> Log in</Link>
+          </p>
+        </AnimationContainer>
       </footer>
     </>
   );
