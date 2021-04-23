@@ -15,4 +15,6 @@ export const Container = styled.div`
     border: 0;
     color: #262626;
   }
+
+  margin-bottom: 10px;
 `;

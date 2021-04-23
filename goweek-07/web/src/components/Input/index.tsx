@@ -6,11 +6,11 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   name: string;
 }
 
-const Input: React.FC<InputProps> = () => {
+const Input: React.FC<InputProps> = ({ ...rest }) => {
   return (
     <>
       <Container>
-        <input placeholder="Your email" />
+        <input {...rest} />
       </Container>
     </>
   );

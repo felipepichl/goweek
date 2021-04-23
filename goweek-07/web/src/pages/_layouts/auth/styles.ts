@@ -35,13 +35,14 @@ export const Content = styled.div`
       margin: 20px 0 30px;
     }
 
-    /* h2 {
+    h2 {
       font-weight: 600;
       line-height: 20px;
       font-size: 17px;
       color: #999;
       text-align: center;
-    } */
+      margin-bottom: 20px;
+    }
 
     form {
       display: flex;

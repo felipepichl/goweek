@@ -12,14 +12,13 @@ const SignIn: React.FC = () => {
       <div>
         <img src={logo} alt="Instaclone" />
 
-        <Input name="email" />
+        <Input name="email" placeholder="Email" />
 
         <Button>Log in</Button>
       </div>
 
       <footer>
         <p>
-          {' '}
           Don&apos;t have an account?
           <Link to="/register"> Sign up</Link>
         </p>
