@@ -9,12 +9,12 @@ import Button from '../../components/Button';
 
 import { AnimationContainer } from './styles';
 
-interface ISignFormData {
+interface ISignInFormData {
   email: string;
 }
 
 const SignIn: React.FC = () => {
-  const handleSubmit = useCallback(async (data: ISignFormData) => {
+  const handleSubmit = useCallback(async (data: ISignInFormData) => {
     console.log(data.email);
   }, []);
 
