@@ -1,6 +1,7 @@
 import React, { useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { Form } from '@unform/web';
+import * as Yup from 'yup';
 
 import logo from '../../assets/logo.svg';
 
@@ -15,7 +16,19 @@ interface ISignInFormData {
 
 const SignIn: React.FC = () => {
   const handleSubmit = useCallback(async (data: ISignInFormData) => {
-    console.log(data.email);
+    try {
+      const schema = Yup.object().shape({
+        email: Yup.string()
+          .email('A valid email is required')
+          .required('This field is required'),
+      });
+
+      await schema.validate(data, { abortEarly: false });
+
+      console.log('Log In');
+    } catch (err) {
+      console.log(err);
+    }
   }, []);
 
   return (
