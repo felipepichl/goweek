@@ -1,7 +1,10 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Form } from '@unform/web';
+import { FormHandles } from '@unform/core';
 import * as Yup from 'yup';
+
+import getValidationsErros from '../../utils/getValidationsErrors';
 
 import logo from '../../assets/logo.svg';
 
@@ -15,8 +18,12 @@ interface ISignInFormData {
 }
 
 const SignIn: React.FC = () => {
+  const formRef = useRef<FormHandles>(null);
+
   const handleSubmit = useCallback(async (data: ISignInFormData) => {
     try {
+      formRef.current?.setErrors({});
+
       const schema = Yup.object().shape({
         email: Yup.string()
           .email('A valid email is required')
@@ -27,7 +34,11 @@ const SignIn: React.FC = () => {
 
       console.log('Log In');
     } catch (err) {
-      console.log(err);
+      if (err instanceof Yup.ValidationError) {
+        const error = getValidationsErros(err);
+
+        formRef.current?.setErrors(error);
+      }
     }
   }, []);
 
@@ -35,7 +46,7 @@ const SignIn: React.FC = () => {
     <>
       <AnimationContainer>
         <div>
-          <Form onSubmit={handleSubmit}>
+          <Form ref={formRef} onSubmit={handleSubmit}>
             <img src={logo} alt="Instaclone" />
 
             <Input name="email" placeholder="Email" />
