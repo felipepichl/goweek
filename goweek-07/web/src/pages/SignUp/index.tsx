@@ -1,6 +1,10 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Form } from '@unform/web';
+import { FormHandles } from '@unform/core';
+import * as Yup from 'yup';
+
+import getValidationsErros from '../../utils/getValidationsErrors';
 
 import logo from '../../assets/logo.svg';
 
@@ -16,17 +20,40 @@ interface ISignUpFormData {
 }
 
 const SignUp: React.FC = () => {
+  const formRef = useRef<FormHandles>(null);
+
   const handleSubmit = useCallback(async (data: ISignUpFormData) => {
-    console.log(data.email);
-    console.log(data.fullname);
-    console.log(data.username);
+    try {
+      formRef.current?.setErrors({});
+
+      const schema = Yup.object().shape({
+        email: Yup.string()
+          .email('A valid email is required')
+          .required('This field is required'),
+        fullname: Yup.string().required('This field is required'),
+        username: Yup.string()
+          .required('This field is required')
+          .lowercase('Lowercase only'),
+        // .strict(),
+      });
+
+      await schema.validate(data, { abortEarly: false });
+
+      console.log('Log In');
+    } catch (err) {
+      if (err instanceof Yup.ValidationError) {
+        const error = getValidationsErros(err);
+
+        formRef.current?.setErrors(error);
+      }
+    }
   }, []);
 
   return (
     <>
       <AnimationContainer>
         <div>
-          <Form onSubmit={handleSubmit}>
+          <Form ref={formRef} onSubmit={handleSubmit}>
             <img src={logo} alt="Intaclone" />
 
             <h2>Sign up to see photos and videos from your friends.</h2>

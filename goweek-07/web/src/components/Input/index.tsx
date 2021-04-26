@@ -21,7 +21,7 @@ const Input: React.FC<InputProps> = ({ name, ...rest }) => {
 
   return (
     <>
-      <Container>
+      <Container isErrored={!!error}>
         <input defaultValue={defaultValue} ref={inputRef} {...rest} />
       </Container>
       <Error>{error}</Error>
