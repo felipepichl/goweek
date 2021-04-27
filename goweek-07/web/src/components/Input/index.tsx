@@ -24,7 +24,8 @@ const Input: React.FC<InputProps> = ({ name, ...rest }) => {
       <Container isErrored={!!error}>
         <input defaultValue={defaultValue} ref={inputRef} {...rest} />
       </Container>
-      <Error>{error}</Error>
+
+      {error ? <Error>{error}</Error> : null}
     </>
   );
 };

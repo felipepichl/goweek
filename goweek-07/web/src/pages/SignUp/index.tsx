@@ -33,13 +33,13 @@ const SignUp: React.FC = () => {
         fullname: Yup.string().required('This field is required'),
         username: Yup.string()
           .required('This field is required')
-          .lowercase('Lowercase only'),
-        // .strict(),
+          .lowercase('Lowercase only')
+          .strict(),
       });
 
       await schema.validate(data, { abortEarly: false });
 
-      console.log('Log In');
+      console.log('Sign Up');
     } catch (err) {
       if (err instanceof Yup.ValidationError) {
         const error = getValidationsErros(err);

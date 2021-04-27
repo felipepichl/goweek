@@ -10,6 +10,7 @@ export const Container = styled.div<ContainerProps>`
   border: 1px solid #efefef;
   padding: 12px;
   width: 100%;
+  margin-bottom: 5px;
 
   display: flex;
 
@@ -18,6 +19,10 @@ export const Container = styled.div<ContainerProps>`
     background: transparent;
     border: 0;
     color: #262626;
+  }
+
+  & + div {
+    margin-top: 10px;
   }
 
   ${props =>
@@ -30,6 +35,5 @@ export const Container = styled.div<ContainerProps>`
 
 export const Error = styled.div`
   color: #c53030;
-  padding: 10px;
-  min-height: 39px;
+  margin-bottom: 10px;
 `;

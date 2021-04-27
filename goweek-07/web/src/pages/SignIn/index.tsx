@@ -32,7 +32,7 @@ const SignIn: React.FC = () => {
 
       await schema.validate(data, { abortEarly: false });
 
-      console.log('Log In');
+      console.log('Sign In');
     } catch (err) {
       if (err instanceof Yup.ValidationError) {
         const error = getValidationsErros(err);
