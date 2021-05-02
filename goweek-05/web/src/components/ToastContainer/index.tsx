@@ -1,48 +1,34 @@
 import React from 'react';
 import { FiAlertCircle, FiXCircle } from 'react-icons/fi';
 
+import { IToastMessage } from '../../hooks/toast';
 import { Container, Toast } from './styles';
 
-const TooastContainer: React.FC = () => {
+interface IToastContainerProps {
+  messages: IToastMessage[];
+}
+
+const TooastContainer: React.FC<IToastContainerProps> = ({ messages }) => {
   return (
     <Container>
-      <Toast hasDescription>
-        <FiAlertCircle size={20} />
+      {messages.map(message => (
+        <Toast
+          key={message.id}
+          type={message.type}
+          hasDescription={!!message.description}
+        >
+          <FiAlertCircle size={20} />
 
-        <div>
-          <strong>An error ocurred</strong>
-          <p>You cannot log in</p>
-        </div>
+          <div>
+            <strong>{message.title}</strong>
+            {message.description && <p>{message.description}</p>}
+          </div>
 
-        <button type="button">
-          <FiXCircle size={18} />
-        </button>
-      </Toast>
-
-      <Toast type="success" hasDescription={false}>
-        <FiAlertCircle size={20} />
-
-        <div>
-          <strong>An error ocurred</strong>
-        </div>
-
-        <button type="button">
-          <FiXCircle size={18} />
-        </button>
-      </Toast>
-
-      <Toast type="error" hasDescription>
-        <FiAlertCircle size={20} />
-
-        <div>
-          <strong>An error ocurred</strong>
-          <p>You cannot log in</p>
-        </div>
-
-        <button type="button">
-          <FiXCircle size={18} />
-        </button>
-      </Toast>
+          <button type="button">
+            <FiXCircle size={18} />
+          </button>
+        </Toast>
+      ))}
     </Container>
   );
 };
