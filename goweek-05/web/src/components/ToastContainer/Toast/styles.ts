@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { animated } from 'react-spring';
 
 interface ComtainerProps {
   type?: 'info' | 'success' | 'error';
@@ -22,7 +23,7 @@ const toatsTypeVariations = {
   `,
 };
 
-export const Container = styled.div<ComtainerProps>`
+export const Container = styled(animated.div)<ComtainerProps>`
   width: 360px;
 
   position: relative;
