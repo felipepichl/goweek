@@ -1,12 +1,12 @@
 import styled, { css } from 'styled-components';
 
-interface ContainerProps {
+interface IContainerProps {
   isFocused: boolean;
   isFilled: boolean;
   isErrored: boolean;
 }
 
-export const Container = styled.div<ContainerProps>`
+export const Container = styled.div<IContainerProps>`
   background: #fff;
   border-radius: 4px;
   padding: 18px;
