@@ -1,16 +1,39 @@
 import React from 'react';
-import { FiCircle, FiXCircle } from 'react-icons/fi';
+import {
+  FiAlertCircle,
+  FiCheckCircle,
+  FiInfo,
+  FiCircle,
+  FiXCircle,
+} from 'react-icons/fi';
+
+import { IToastMessage, useToast } from '../../../hooks/toast';
 
 import { Container } from './styles';
 
-const Toast: React.FC = () => {
+interface IToastProps {
+  message: IToastMessage;
+  style: object;
+}
+
+const icons = {
+  info: <FiInfo size={24} />,
+  error: <FiAlertCircle size={24} />,
+  success: <FiCheckCircle size={24} />,
+};
+
+const Toast: React.FC<IToastProps> = ({ message, style }) => {
   return (
-    <Container hasDescription>
-      <FiCircle size={20} />
+    <Container
+      type={message.type}
+      hasDescription={!!message.description}
+      style={style}
+    >
+      {icons[message.type || 'info']}
 
       <div>
-        <strong>An error ocurred</strong>
-        <p>You cannot log in</p>
+        <strong>{message.title}</strong>
+        {message.description && <p>{message.description}</p>}
       </div>
 
       <button type="button">
