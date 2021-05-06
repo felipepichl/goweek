@@ -1,9 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   FiAlertCircle,
   FiCheckCircle,
   FiInfo,
-  FiCircle,
   FiXCircle,
 } from 'react-icons/fi';
 
@@ -23,6 +22,18 @@ const icons = {
 };
 
 const Toast: React.FC<IToastProps> = ({ message, style }) => {
+  const { removeToast } = useToast();
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      removeToast(message.id);
+    }, 3000);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [removeToast, message.id]);
+
   return (
     <Container
       type={message.type}
@@ -36,7 +47,7 @@ const Toast: React.FC<IToastProps> = ({ message, style }) => {
         {message.description && <p>{message.description}</p>}
       </div>
 
-      <button type="button">
+      <button onClick={() => removeToast(message.id)} type="button">
         <FiXCircle size={18} />
       </button>
     </Container>
