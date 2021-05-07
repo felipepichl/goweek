@@ -39,7 +39,7 @@ const SignIn: React.FC = () => {
 
         await schema.validate(data, { abortEarly: false });
 
-        signIn({
+        await signIn({
           email: data.email,
         });
       } catch (err) {
@@ -47,6 +47,8 @@ const SignIn: React.FC = () => {
           const error = getValidationsErros(err);
 
           formRef.current?.setErrors(error);
+
+          return;
         }
 
         addToast({
