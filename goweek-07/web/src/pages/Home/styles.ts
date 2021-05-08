@@ -15,7 +15,7 @@ export const Post = styled.div`
   border-radius: 4px;
   background: #fff;
 
-  width: 600px;
+  width: 100%;
   max-width: 600px;
 
   header {
@@ -23,7 +23,6 @@ export const Post = styled.div`
     align-items: center;
     justify-content: space-between;
 
-    width: 100%;
     padding: 15px;
 
     > div {
@@ -39,6 +38,23 @@ export const Post = styled.div`
       span {
         font-weight: bold;
         margin: 0 10px 0 10px;
+      }
+    }
+  }
+
+  article {
+    display: flex;
+    justify-content: center;
+    border-top: 1px solid rgba(38, 38, 38, 0.1);
+
+    img {
+      max-width: 600px;
+      max-height: 750px;
+      width: auto;
+      height: auto;
+
+      @media screen and (max-width: 600px) {
+        width: 100%;
       }
     }
   }
