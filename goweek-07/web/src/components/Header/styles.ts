@@ -15,7 +15,7 @@ export const Container = styled.div`
   @media screen and (max-width: 769px) {
     justify-content: center;
 
-    input,
+    div,
     aside {
       display: none;
     }
@@ -23,5 +23,40 @@ export const Container = styled.div`
 
   nav {
     margin-left: 15px;
+  }
+
+  div {
+    width: 250px;
+
+    input {
+      ::-webkit-input-placeholder {
+        text-align: center;
+      }
+    }
+  }
+
+  aside {
+    align-items: center;
+
+    a {
+      margin: 15px;
+    }
+  }
+`;
+
+export const Logo = styled.img`
+  height: 40px;
+
+  @media screen and (max-width: 769px) {
+    display: none;
+  }
+`;
+
+export const LogoMobile = styled.img`
+  height: 40px;
+  display: none;
+
+  @media screen and (max-width: 769px) {
+    display: block;
   }
 `;
