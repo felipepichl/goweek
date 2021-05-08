@@ -9,8 +9,8 @@ const DefaultLayout: React.FC = ({ children }) => {
   return (
     <Wrapper>
       <Header />
-      <Footer />
       {children}
+      <Footer />
     </Wrapper>
   );
 };
