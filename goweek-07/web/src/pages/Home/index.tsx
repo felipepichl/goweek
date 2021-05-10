@@ -32,7 +32,7 @@ const Home: React.FC = () => {
 
   useEffect(() => {
     async function loadPost() {
-      const response = await api.post('/posts');
+      const response = await api.get('/posts');
 
       setPosts(response.data);
       console.log(response.data);

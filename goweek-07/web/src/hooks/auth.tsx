@@ -24,6 +24,8 @@ const AuthProvider: React.FC = ({ children }) => {
     const token = localStorage.getItem('@GoWeek-07:token');
 
     if (user && token) {
+      api.defaults.headers.authorization = `Bearer ${token}`;
+
       return { user: JSON.parse(user), token };
     }
 
