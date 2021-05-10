@@ -62,6 +62,30 @@ export const Post = styled.div`
   footer {
     padding: 15px;
   }
+
+  form {
+    section {
+      display: flex;
+      align-items: center;
+      border-top: 1px solid rgba(38, 38, 38, 0.1);
+
+      padding-left: 16px;
+      padding-right: 16px;
+      min-height: 56px;
+
+      textarea {
+        resize: none;
+        border: none;
+        width: 100%;
+        height: 18px;
+        max-height: 80px;
+        font-size: inherit;
+        ::webkit-input-placeholder {
+          text-align: center;
+        }
+      }
+    }
+  }
 `;
 
 export const PostButtons = styled.div`
@@ -106,4 +130,9 @@ export const PostDescription = styled.div`
     margin-left: 4px;
     margin-right: 5px;
   }
+`;
+
+export const PostComment = styled.button`
+  color: #3897f0;
+  font-weight: bold;
 `;

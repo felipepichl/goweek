@@ -11,6 +11,7 @@ import {
   Container,
   Post,
   PostButtons,
+  PostComment,
   PostDescription,
   PostLike,
 } from './styles';
@@ -76,6 +77,13 @@ const Home: React.FC = () => {
             </p>
           </PostDescription>
         </footer>
+
+        <form action="">
+          <section>
+            <textarea placeholder="Add a comment..." />
+            <PostComment type="button">Post</PostComment>
+          </section>
+        </form>
       </Post>
     </Container>
   );
