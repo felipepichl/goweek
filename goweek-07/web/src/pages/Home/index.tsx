@@ -35,7 +35,6 @@ const Home: React.FC = () => {
       const response = await api.get('/posts');
 
       setPosts(response.data);
-      console.log(response.data);
     }
 
     loadPost();
@@ -43,72 +42,68 @@ const Home: React.FC = () => {
 
   return (
     <Container>
-      <Post>
-        <header>
-          <div>
-            <img
-              src="https://avatars.githubusercontent.com/u/22602639?v=4"
-              alt=""
-            />
-            <span>__dirname</span>
-          </div>
-          <img src={more} alt="" />
-        </header>
+      {posts.map(post => (
+        <Post key={post.id}>
+          <header>
+            <div>
+              <img src={post.user.preview} alt="" />
+              <span>{post.user.username}</span>
+            </div>
+            <img src={more} alt="" />
+          </header>
 
-        <article>
-          <img
-            src="https://image.shutterstock.com/image-photo/silhouetted-loving-couple-sunset-600w-1774166057.jpg"
-            alt=""
-          />
-        </article>
+          <article>
+            <img src={post.url} alt="" />
+          </article>
 
-        <footer>
-          <PostButtons>
-            <button type="button">
-              <LikeButton
-                options={{
-                  animationData: likeAnimation,
-                  loop: false,
-                  autoplay: false,
-                }}
-              />
-            </button>
+          <footer>
+            <PostButtons>
+              <button type="button">
+                <LikeButton
+                  options={{
+                    animationData: likeAnimation,
+                    loop: false,
+                    autoplay: false,
+                  }}
+                />
+              </button>
 
-            <button type="button">
-              <img src={comment} alt="" />
-            </button>
+              <button type="button">
+                <img src={comment} alt="" />
+              </button>
 
-            <button type="button">
-              <img src={send} alt="" />
-            </button>
-          </PostButtons>
+              <button type="button">
+                <img src={send} alt="" />
+              </button>
+            </PostButtons>
 
-          <PostLike>
-            <>
-              <img
-                src="https://avatars.githubusercontent.com/u/22602639?v=4"
-                alt=""
-              />
-              <span>Like by</span>
-              <strong>mark_24</strong>
-            </>
-          </PostLike>
+            <PostLike>
+              <>
+                <img
+                  src="https://avatars.githubusercontent.com/u/22602639?v=4"
+                  alt=""
+                />
+                <span>Like by</span>
+                <strong>mark_24</strong>
+              </>
+            </PostLike>
 
-          <PostDescription>
-            <p>
-              <strong>mark_24</strong>
-              {' A beautiful sunset '}
-            </p>
-          </PostDescription>
-        </footer>
+            <PostDescription>
+              <p>
+                <strong>mark_24</strong>
+                {' A beautiful sunset '}
+              </p>
+            </PostDescription>
+          </footer>
 
-        <form action="">
-          <section>
-            <textarea placeholder="Add a comment..." />
-            <PostComment type="button">Post</PostComment>
-          </section>
-        </form>
-      </Post>
+          <form action="">
+            <section>
+              <textarea placeholder="Add a comment..." />
+              <PostComment type="button">Post</PostComment>
+            </section>
+          </form>
+        </Post>
+      ))}
     </Container>
   );
 };
