@@ -7,7 +7,13 @@ import send from '../../assets/send.svg';
 
 import likeAnimation from '../../assets/liked.json';
 
-import { Container, Post, PostButtons } from './styles';
+import {
+  Container,
+  Post,
+  PostButtons,
+  PostDescription,
+  PostLike,
+} from './styles';
 
 const Home: React.FC = () => {
   return (
@@ -51,6 +57,24 @@ const Home: React.FC = () => {
               <img src={send} alt="" />
             </button>
           </PostButtons>
+
+          <PostLike>
+            <>
+              <img
+                src="https://avatars.githubusercontent.com/u/22602639?v=4"
+                alt=""
+              />
+              <span>Like by</span>
+              <strong>mark_24</strong>
+            </>
+          </PostLike>
+
+          <PostDescription>
+            <p>
+              <strong>mark_24</strong>
+              {' A beautiful sunset '}
+            </p>
+          </PostDescription>
         </footer>
       </Post>
     </Container>
