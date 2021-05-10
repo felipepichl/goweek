@@ -1,10 +1,13 @@
 import React from 'react';
+import LikeButton from 'react-lottie';
 
 import more from '../../assets/more.svg';
-// import comment from '../../assets/comment.svg';
-// import send from '../../assets/send.svg';
+import comment from '../../assets/comment.svg';
+import send from '../../assets/send.svg';
 
-import { Container, Post } from './styles';
+import likeAnimation from '../../assets/liked.json';
+
+import { Container, Post, PostButtons } from './styles';
 
 const Home: React.FC = () => {
   return (
@@ -27,6 +30,28 @@ const Home: React.FC = () => {
             alt=""
           />
         </article>
+
+        <footer>
+          <PostButtons>
+            <button type="button">
+              <LikeButton
+                options={{
+                  animationData: likeAnimation,
+                  loop: false,
+                  autoplay: false,
+                }}
+              />
+            </button>
+
+            <button type="button">
+              <img src={comment} alt="" />
+            </button>
+
+            <button type="button">
+              <img src={send} alt="" />
+            </button>
+          </PostButtons>
+        </footer>
       </Post>
     </Container>
   );

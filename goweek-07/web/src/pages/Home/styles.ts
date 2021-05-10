@@ -58,4 +58,18 @@ export const Post = styled.div`
       }
     }
   }
+
+  footer {
+    padding: 15px;
+  }
+`;
+
+export const PostButtons = styled.div`
+  button {
+    margin-right: 5px;
+
+    img {
+      padding: 5px;
+    }
+  }
 `;
