@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import LikeButton from 'react-lottie';
+
+import api from '../../services/api';
 
 import more from '../../assets/more.svg';
 import comment from '../../assets/comment.svg';
@@ -16,7 +18,29 @@ import {
   PostLike,
 } from './styles';
 
+interface Post {
+  id: string;
+  user: {
+    username: string;
+    preview: string;
+  };
+  url: string;
+}
+
 const Home: React.FC = () => {
+  const [posts, setPosts] = useState<Post[]>([]);
+
+  useEffect(() => {
+    async function loadPost() {
+      const response = await api.post('/posts');
+
+      setPosts(response.data);
+      console.log(response.data);
+    }
+
+    loadPost();
+  }, []);
+
   return (
     <Container>
       <Post>

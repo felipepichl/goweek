@@ -38,6 +38,8 @@ const AuthProvider: React.FC = ({ children }) => {
     localStorage.setItem('@GoWeek-07:user', JSON.stringify(user));
     localStorage.setItem('@GoWeek-07:token', token);
 
+    api.defaults.headers.authorization = `Bearer ${token}`;
+
     setData({ user, token });
   }, []);
 
