@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import LikeButton from 'react-lottie';
 
 import api from '../../services/api';
@@ -40,6 +40,10 @@ const Home: React.FC = () => {
     loadPost();
   }, []);
 
+  const handleLike = useCallback(async (id: string) => {
+    await api.post(`/likes/${id}`);
+  }, []);
+
   return (
     <Container>
       {posts.map(post => (
@@ -58,7 +62,7 @@ const Home: React.FC = () => {
 
           <footer>
             <PostButtons>
-              <button type="button">
+              <button type="button" onClick={() => handleLike(post.id)}>
                 <LikeButton
                   options={{
                     animationData: likeAnimation,
