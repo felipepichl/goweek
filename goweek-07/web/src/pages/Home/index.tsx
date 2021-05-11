@@ -25,6 +25,11 @@ interface Post {
     preview: string;
   };
   url: string;
+  description: string;
+  lastLike: Array<{
+    username: string;
+    preview: string;
+  }>;
 }
 
 const Home: React.FC = () => {
@@ -69,6 +74,8 @@ const Home: React.FC = () => {
                     loop: false,
                     autoplay: false,
                   }}
+                  height={35}
+                  width={35}
                 />
               </button>
 
@@ -83,19 +90,16 @@ const Home: React.FC = () => {
 
             <PostLike>
               <>
-                <img
-                  src="https://avatars.githubusercontent.com/u/22602639?v=4"
-                  alt=""
-                />
+                <img src={post.lastLike[0].preview} alt="" />
                 <span>Like by</span>
-                <strong>mark_24</strong>
+                <strong>{post.lastLike[0].username}</strong>
               </>
             </PostLike>
 
             <PostDescription>
               <p>
-                <strong>mark_24</strong>
-                {' A beautiful sunset '}
+                <strong>{post.user.username}</strong>
+                {post.description}
               </p>
             </PostDescription>
           </footer>
