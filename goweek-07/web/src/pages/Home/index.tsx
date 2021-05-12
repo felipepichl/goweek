@@ -3,6 +3,8 @@ import LikeButton from 'react-lottie';
 
 import api from '../../services/api';
 
+import { useAuth } from '../../hooks/auth';
+
 import Storie from '../../components/Storie';
 
 import more from '../../assets/more.svg';
@@ -32,9 +34,12 @@ interface Post {
     username: string;
     preview: string;
   }>;
+  likes: Array<string>;
 }
 
 const Home: React.FC = () => {
+  const { user } = useAuth();
+
   const [posts, setPosts] = useState<Post[]>([]);
 
   useEffect(() => {
@@ -42,6 +47,7 @@ const Home: React.FC = () => {
       const response = await api.get('/posts');
 
       setPosts(response.data);
+      console.log(response.data);
     }
 
     loadPost();
@@ -78,10 +84,12 @@ const Home: React.FC = () => {
                     loop: false,
                     autoplay: false,
                   }}
+                  isStopped={!!post.likes.indexOf(user.id)}
                   height={35}
                   width={35}
                 />
               </button>
+              <span>{post.likes}</span>
 
               <button type="button">
                 <img src={comment} alt="" />

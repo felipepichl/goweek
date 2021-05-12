@@ -5,18 +5,23 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
-  /* height: 100vh; */
 `;
 
 export const Post = styled.div`
   margin-bottom: 20px;
-  border: 1px solid #ddd;
+  border: 1px solid rgba(38, 38, 38, 0.1);
   border-radius: 4px;
   background: #fff;
 
   width: 100%;
   max-width: 600px;
+
+  @media screen and (max-width: 600px) {
+    border: none;
+    border-radius: 0px;
+    border-top: 1px solid rgba(38, 38, 38, 0.1);
+    border-bottom: 1px solid rgba(38, 38, 38, 0.1);
+  }
 
   header {
     display: flex;
