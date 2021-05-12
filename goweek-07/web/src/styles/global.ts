@@ -8,6 +8,11 @@ export default createGlobalStyle`
     box-sizing: border-box;
   }
 
+  html, body, #root {
+    background: #fafafa;
+    margin-bottom: 20px;
+  }
+
   body {
     -webkit-font-smothing: antialiased;
   }

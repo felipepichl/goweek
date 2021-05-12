@@ -17,6 +17,7 @@ const Header: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
 
   const handleSubmit = useCallback(() => {
+    // eslint-disable-next-line no-console
     console.log('Subimt');
   }, []);
 
