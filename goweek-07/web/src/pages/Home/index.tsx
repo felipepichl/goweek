@@ -3,6 +3,8 @@ import LikeButton from 'react-lottie';
 
 import api from '../../services/api';
 
+import Storie from '../../components/Storie';
+
 import more from '../../assets/more.svg';
 import comment from '../../assets/comment.svg';
 import send from '../../assets/send.svg';
@@ -51,6 +53,8 @@ const Home: React.FC = () => {
 
   return (
     <Container>
+      <Storie />
+
       {posts.map(post => (
         <Post key={post.id}>
           <header>
