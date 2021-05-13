@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import LikeButton from 'lottie-react-web';
+// import LikeButton from 'lottie-react-web';
+import LikeButton from 'react-lottie';
 
 import api from '../../services/api';
 
@@ -52,6 +53,7 @@ const Home: React.FC = () => {
       /**
         *
        return 0 === true return -1 === false
+       return 1 === true return -1 === false
       const a = posts.map(post => post.likes.indexOf(user.id) === 0);
       */
     }
@@ -60,14 +62,20 @@ const Home: React.FC = () => {
   }, [user.id]);
 
   const handleLike = useCallback(
-    async (id: string) => {
-      await api.post(`/likes/${id}`);
+    async (id: string, animation: boolean) => {
+      // await api.post(`/likes/${id}`);
+
+      console.log(toogle);
+
+      setToogle(true);
 
       if (toogle) {
         setToogle(false);
       } else {
         setToogle(true);
       }
+
+      console.log(toogle);
     },
     [toogle],
   );
@@ -92,13 +100,14 @@ const Home: React.FC = () => {
 
           <footer>
             <PostButtons>
-              <button type="button" onClick={() => handleLike(post.id)}>
+              <button type="button" onClick={() => handleLike(post.id, true)}>
                 <LikeButton
-                  direction={toogle ? 1 : -1}
                   options={{
                     animationData: likeAnimation,
                     loop: false,
+                    autoplay: post.likes.indexOf(user.id) === 0 || false,
                   }}
+                  direction={toogle ? 1 : -1}
                   height={35}
                   width={35}
                 />
