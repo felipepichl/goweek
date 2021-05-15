@@ -62,20 +62,14 @@ const Home: React.FC = () => {
   }, [user.id]);
 
   const handleLike = useCallback(
-    async (id: string, animation: boolean) => {
-      // await api.post(`/likes/${id}`);
-
-      console.log(toogle);
-
-      setToogle(true);
+    async (id: string) => {
+      await api.post(`/likes/${id}`);
 
       if (toogle) {
         setToogle(false);
       } else {
         setToogle(true);
       }
-
-      console.log(toogle);
     },
     [toogle],
   );
@@ -100,19 +94,27 @@ const Home: React.FC = () => {
 
           <footer>
             <PostButtons>
-              <button type="button" onClick={() => handleLike(post.id, true)}>
-                <LikeButton
-                  options={{
-                    animationData: likeAnimation,
-                    loop: false,
-                    autoplay: post.likes.indexOf(user.id) === 0 || false,
-                  }}
-                  direction={toogle ? 1 : -1}
-                  height={35}
-                  width={35}
-                />
+              <button type="button" onClick={() => handleLike(post.id)}>
+                {post.likes.indexOf(user.id) === 0 ? (
+                  <LikeButton
+                    direction={toogle ? -1 : 1}
+                    options={{
+                      animationData: likeAnimation,
+                      loop: false,
+                      autoplay: true,
+                    }}
+                  />
+                ) : (
+                  <LikeButton
+                    direction={toogle ? 1 : -1}
+                    options={{
+                      animationData: likeAnimation,
+                      loop: false,
+                      autoplay: false,
+                    }}
+                  />
+                )}
               </button>
-              <span>{post.likes}</span>
 
               <button type="button">
                 <img src={comment} alt="" />
