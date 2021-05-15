@@ -25,3 +25,27 @@ export const Container = styled.div`
     width: 100%;
   }
 `;
+
+export const User = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+`;
+
+export const ImageContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  height: 90px;
+  width: 90px;
+
+  img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: 2px solid #fafafa;
+    position: absolute;
+  }
+`;

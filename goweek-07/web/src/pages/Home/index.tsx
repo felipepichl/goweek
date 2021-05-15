@@ -1,5 +1,4 @@
 import React, { useCallback, useEffect, useState } from 'react';
-// import LikeButton from 'lottie-react-web';
 import LikeButton from 'react-lottie';
 
 import api from '../../services/api';
@@ -52,9 +51,9 @@ const Home: React.FC = () => {
 
       /**
         *
-       return 0 === true return -1 === false
-       return 1 === true return -1 === false
-      const a = posts.map(post => post.likes.indexOf(user.id) === 0);
+        return 0 === true return -1 === false
+        return 1 === true return -1 === false
+        posts.map(post => post.likes.indexOf(user.id) === 0);
       */
     }
 
