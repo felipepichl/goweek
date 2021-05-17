@@ -28,17 +28,11 @@ export const Post = styled.div`
     align-items: center;
     justify-content: space-between;
 
-    padding: 15px;
+    padding: 8px;
 
     > div {
       display: flex;
       align-items: center;
-
-      img {
-        height: 38px;
-        width: 38px;
-        border-radius: 50%;
-      }
 
       span {
         font-weight: bold;
@@ -90,6 +84,29 @@ export const Post = styled.div`
         }
       }
     }
+  }
+`;
+
+export const ImageContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  height: 50px;
+  width: 50px;
+
+  img {
+    height: 38px;
+    width: 38px;
+    border-radius: 50%;
+    border: 1px solid #fafafa;
+    position: absolute;
+  }
+
+  span {
+    font-weight: bold;
+    margin: 0 10px 0 10px;
   }
 `;
 

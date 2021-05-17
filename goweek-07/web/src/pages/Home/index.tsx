@@ -1,5 +1,8 @@
 import React, { useCallback, useEffect, useState } from 'react';
+// eslint-disable-next-line import/no-duplicates
 import LikeButton from 'react-lottie';
+// eslint-disable-next-line import/no-duplicates
+import Loading from 'react-lottie';
 
 import api from '../../services/api';
 
@@ -12,10 +15,12 @@ import comment from '../../assets/comment.svg';
 import send from '../../assets/send.svg';
 
 import likeAnimation from '../../assets/liked.json';
+import loading from '../../assets/history.json';
 
 import {
   Container,
   Post,
+  ImageContainer,
   PostButtons,
   PostComment,
   PostDescription,
@@ -81,7 +86,19 @@ const Home: React.FC = () => {
         <Post key={post.id}>
           <header>
             <div>
-              <img src={post.user.preview} alt="" />
+              <ImageContainer>
+                <Loading
+                  options={{
+                    animationData: loading,
+                    loop: true,
+                    autoplay: true,
+                  }}
+                />
+                <img
+                  src="https://avatars.githubusercontent.com/u/22602639?v=4"
+                  alt=""
+                />
+              </ImageContainer>
               <span>{post.user.username}</span>
             </div>
             <img src={more} alt="" />
