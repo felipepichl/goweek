@@ -6,7 +6,7 @@ interface ContainerProps {
 
 export const Container = styled.div<ContainerProps>`
   background: #fafafa;
-  border-radius: 3px;
+  border-radius: 4px;
   border: 1px solid #efefef;
   padding: 12px;
   width: 100%;

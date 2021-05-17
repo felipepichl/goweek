@@ -39,6 +39,7 @@ const SignUp: React.FC = () => {
 
       await schema.validate(data, { abortEarly: false });
 
+      // eslint-disable-next-line no-console
       console.log('Sign Up');
     } catch (err) {
       if (err instanceof Yup.ValidationError) {
