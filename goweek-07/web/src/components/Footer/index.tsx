@@ -20,7 +20,7 @@ const Footer: React.FC = () => {
         <Icon src={search} />
       </Link>
 
-      <Link to="/">
+      <Link to="/post">
         <img src={add} alt="Add" />
       </Link>
 

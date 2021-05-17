@@ -94,10 +94,7 @@ const Home: React.FC = () => {
                     autoplay: true,
                   }}
                 />
-                <img
-                  src="https://avatars.githubusercontent.com/u/22602639?v=4"
-                  alt=""
-                />
+                <img src={post.user.preview} alt="" />
               </ImageContainer>
               <span>{post.user.username}</span>
             </div>
