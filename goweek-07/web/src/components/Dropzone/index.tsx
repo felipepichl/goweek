@@ -36,14 +36,20 @@ const Dropzone: React.FC<Props> = ({ onFileUploaded }) => {
       <input {...getInputProps()} accept="image/*" />
 
       {seletedFileUrl ? (
-        <img src={seletedFileUrl} alt="Point thumbnail" />
+        <UploadButton
+          options={{
+            animationData: uploadAnimationComplete,
+            loop: false,
+          }}
+          height={70}
+          width={70}
+        />
       ) : (
+        // <img src="" alt="Point thumbnail" />
         <>
           <UploadButton
             options={{
               animationData: uploadAnimation,
-              loop: true,
-              autoplay: true,
             }}
             height={70}
             width={70}
