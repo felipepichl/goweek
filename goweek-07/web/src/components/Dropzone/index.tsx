@@ -6,7 +6,7 @@ import uploadAnimation from '../../assets/upload.json';
 import uploadAnimationComplete from '../../assets/uploadComplete.json';
 import uploadAnimationError from '../../assets/error.json';
 
-import { Container } from './styles';
+import { Container, ImageContainer, AnimationContainer } from './styles';
 
 interface Props {
   onFileUploaded: (file: File) => void;
@@ -60,20 +60,27 @@ const Dropzone: React.FC<Props> = ({ onFileUploaded }) => {
         </>
       ) : (
         <>
-          <Animation
-            options={{
-              animationData: seletedFileUrl
-                ? uploadAnimationComplete
-                : uploadAnimation,
+          <AnimationContainer>
+            <Animation
+              options={{
+                animationData: seletedFileUrl
+                  ? uploadAnimationComplete
+                  : uploadAnimation,
 
-              loop: !seletedFileUrl,
-            }}
-            height={70}
-            width={70}
-          />
+                loop: !seletedFileUrl,
+              }}
+              height={70}
+              width={70}
+            />
+            {seletedFileUrl && <p>Upload success</p>}
+          </AnimationContainer>
 
           {seletedFileUrl ? (
-            <p>Upload success</p>
+            <>
+              <ImageContainer>
+                <img src={seletedFileUrl} alt="" />
+              </ImageContainer>
+            </>
           ) : (
             <p>Drag a photo or click</p>
           )}
