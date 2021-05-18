@@ -137,11 +137,11 @@ const Home: React.FC = () => {
             </PostButtons>
 
             <PostLike>
-              <>
+              {/* <>
                 <img src={post.lastLike[0].preview} alt="" />
                 <span>Like by</span>
                 <strong>{post.lastLike[0].username}</strong>
-              </>
+              </> */}
             </PostLike>
 
             <PostDescription>
