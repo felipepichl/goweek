@@ -1,8 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
-// eslint-disable-next-line import/no-duplicates
-import LikeButton from 'react-lottie';
-// eslint-disable-next-line import/no-duplicates
-import Loading from 'react-lottie';
+
+import Animation from 'react-lottie';
 
 import api from '../../services/api';
 
@@ -87,7 +85,7 @@ const Home: React.FC = () => {
           <header>
             <div>
               <ImageContainer>
-                <Loading
+                <Animation
                   options={{
                     animationData: loading,
                     loop: true,
@@ -109,7 +107,7 @@ const Home: React.FC = () => {
             <PostButtons>
               <button type="button" onClick={() => handleLike(post.id)}>
                 {post.likes.indexOf(user.id) === 0 ? (
-                  <LikeButton
+                  <Animation
                     direction={toogle ? -1 : 1}
                     options={{
                       animationData: likeAnimation,
@@ -118,7 +116,7 @@ const Home: React.FC = () => {
                     }}
                   />
                 ) : (
-                  <LikeButton
+                  <Animation
                     direction={toogle ? 1 : -1}
                     options={{
                       animationData: likeAnimation,
