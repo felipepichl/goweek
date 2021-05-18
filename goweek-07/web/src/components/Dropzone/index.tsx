@@ -14,9 +14,17 @@ interface Props {
 const Dropzone: React.FC<Props> = ({ onFileUploaded }) => {
   const [seletedFileUrl, setSeletedFileUrl] = useState('');
 
+  const [invalidFile, setInvalidFile] = useState(false);
+
   const onDrop = useCallback(
     acceptedFiles => {
       const file = acceptedFiles[0];
+
+      if (!file) {
+        setInvalidFile(true);
+        return;
+      }
+      setInvalidFile(false);
 
       const fileUrl = URL.createObjectURL(file);
 
@@ -35,26 +43,23 @@ const Dropzone: React.FC<Props> = ({ onFileUploaded }) => {
     <Container {...getRootProps()}>
       <input {...getInputProps()} accept="image/*" />
 
-      {seletedFileUrl ? (
-        <UploadButton
-          options={{
-            animationData: uploadAnimationComplete,
-            loop: false,
-          }}
-          height={70}
-          width={70}
-        />
+      {invalidFile ? (
+        <p>File not suported</p>
       ) : (
-        // <img src="" alt="Point thumbnail" />
         <>
           <UploadButton
             options={{
-              animationData: uploadAnimation,
+              animationData: seletedFileUrl
+                ? uploadAnimationComplete
+                : uploadAnimation,
+
+              loop: !seletedFileUrl,
             }}
             height={70}
             width={70}
           />
-          <p>Drag a photo or click</p>
+
+          {seletedFileUrl ? <p>Upload OK</p> : <p>Drag a photo or click</p>}
         </>
       )}
     </Container>
