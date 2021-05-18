@@ -1,9 +1,10 @@
 import React, { useState, useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
-import UploadButton from 'react-lottie';
+import Animation from 'react-lottie';
 
 import uploadAnimation from '../../assets/upload.json';
 import uploadAnimationComplete from '../../assets/uploadComplete.json';
+import uploadAnimationError from '../../assets/error.json';
 
 import { Container } from './styles';
 
@@ -24,7 +25,9 @@ const Dropzone: React.FC<Props> = ({ onFileUploaded }) => {
         setInvalidFile(true);
         return;
       }
+
       setInvalidFile(false);
+      setSeletedFileUrl('');
 
       const fileUrl = URL.createObjectURL(file);
 
@@ -44,10 +47,20 @@ const Dropzone: React.FC<Props> = ({ onFileUploaded }) => {
       <input {...getInputProps()} accept="image/*" />
 
       {invalidFile ? (
-        <p>File not suported</p>
+        <>
+          <Animation
+            options={{
+              animationData: uploadAnimationError,
+            }}
+            height={70}
+            width={70}
+          />
+
+          <p>Unsupported file, only images</p>
+        </>
       ) : (
         <>
-          <UploadButton
+          <Animation
             options={{
               animationData: seletedFileUrl
                 ? uploadAnimationComplete
@@ -59,7 +72,11 @@ const Dropzone: React.FC<Props> = ({ onFileUploaded }) => {
             width={70}
           />
 
-          {seletedFileUrl ? <p>Upload OK</p> : <p>Drag a photo or click</p>}
+          {seletedFileUrl ? (
+            <p>Upload success</p>
+          ) : (
+            <p>Drag a photo or click</p>
+          )}
         </>
       )}
     </Container>
