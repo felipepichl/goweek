@@ -14,8 +14,19 @@ interface Props {
 
 const Dropzone: React.FC<Props> = ({ onFileUploaded }) => {
   const [seletedFileUrl, setSeletedFileUrl] = useState('');
-
   const [invalidFile, setInvalidFile] = useState(false);
+
+  const renderDragMessage = useCallback(() => {
+    if (seletedFileUrl) {
+      return <p>Upload success</p>;
+    }
+
+    if (invalidFile) {
+      return <p>Unsupported file, only images</p>;
+    }
+
+    return <p>Drag a photo or click</p>;
+  }, [seletedFileUrl, invalidFile]);
 
   const onDrop = useCallback(
     acceptedFiles => {
@@ -56,7 +67,7 @@ const Dropzone: React.FC<Props> = ({ onFileUploaded }) => {
             width={70}
           />
 
-          <p>Unsupported file, only images</p>
+          {renderDragMessage()}
         </>
       ) : (
         <>
@@ -72,7 +83,7 @@ const Dropzone: React.FC<Props> = ({ onFileUploaded }) => {
               height={70}
               width={70}
             />
-            {seletedFileUrl && <p>Upload success</p>}
+            {seletedFileUrl && renderDragMessage()}
           </AnimationContainer>
 
           {seletedFileUrl ? (
@@ -82,7 +93,7 @@ const Dropzone: React.FC<Props> = ({ onFileUploaded }) => {
               </ImageContainer>
             </>
           ) : (
-            <p>Drag a photo or click</p>
+            renderDragMessage()
           )}
         </>
       )}
