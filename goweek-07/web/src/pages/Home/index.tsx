@@ -1,10 +1,8 @@
 import React, { useCallback, useEffect, useState } from 'react';
-
 import Animation from 'react-lottie';
 
-import api from '../../services/api';
-
 import { useAuth } from '../../hooks/auth';
+import api from '../../services/api';
 
 import Storie from '../../components/Storie';
 
