@@ -43,7 +43,7 @@ UserSchema.virtual('preview').get(function() {
   if (this.avatar) {
     return this.avatar.url;
   }
-  return 'https://api.adorable.io/avatars/60/abott@adorable.png';
+  return 'https://images.unsplash.com/photo-1509828945144-552b3b1a968d?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8ZHVja3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60';
 });
 
 UserSchema.methods = {
