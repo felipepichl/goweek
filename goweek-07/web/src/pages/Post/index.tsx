@@ -1,4 +1,4 @@
-import React, { useCallback, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { Form } from '@unform/web';
 import { FormHandles } from '@unform/core';
 import { useHistory } from 'react-router-dom';
@@ -21,8 +21,15 @@ const Post: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
 
   const [seletedFile, setSeletedFile] = useState<File>();
+  const [isActivationButton, setIsActivationButton] = useState(true);
 
   const history = useHistory();
+
+  useEffect(() => {
+    if (seletedFile) {
+      setIsActivationButton(false);
+    }
+  }, [seletedFile]);
 
   const handleSubmit = useCallback(
     async (formData: IPostFormData) => {
@@ -40,7 +47,7 @@ const Post: React.FC = () => {
           data.append('description', formData.description);
         }
 
-        // await api.post('posts', data);
+        await api.post('posts', data);
         history.push('/home');
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
@@ -59,7 +66,7 @@ const Post: React.FC = () => {
         <Form ref={formRef} onSubmit={handleSubmit}>
           <Dropzone onFileUploaded={setSeletedFile} />
           <Input name="description" placeholder="Description" />
-          <Button>Send</Button>
+          <Button disabled={isActivationButton}>Send</Button>
         </Form>
       </Content>
     </Container>

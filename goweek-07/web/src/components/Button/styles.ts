@@ -11,4 +11,9 @@ export const Container = styled.button`
   width: 100%;
 
   margin-top: 5px;
+
+  :disabled {
+    cursor: not-allowed;
+    color: rgba(135, 134, 139, 0.9);
+  }
 `;
