@@ -135,11 +135,14 @@ const Home: React.FC = () => {
             </PostButtons>
 
             <PostLike>
-              {/* <>
-                <img src={post.lastLike[0].preview} alt="" />
-                <span>Like by</span>
-                <strong>{post.lastLike[0].username}</strong>
-              </> */}
+              {post.lastLike.length > 0 && (
+                <>
+                  {toogle && <span>like</span>}
+                  <img src={post.lastLike[0].preview} alt="" />
+                  <span>Like by</span>
+                  <strong>{post.lastLike[0].username}</strong>
+                </>
+              )}
             </PostLike>
 
             <PostDescription>
