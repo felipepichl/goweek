@@ -20,6 +20,7 @@ class LikeController {
       post.lastLike.push(req.userId);
     } else {
       post.likes.splice(liked, 1);
+      post.lastLike = [];
     }
 
     await post.save();
