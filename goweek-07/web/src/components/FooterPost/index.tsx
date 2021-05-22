@@ -9,7 +9,7 @@ import send from '../../assets/send.svg';
 
 import likeAnimation from '../../assets/liked.json';
 
-import { Container, PostButtons } from './styles';
+import { Container, PostButtons, PostLike } from './styles';
 
 interface IFooterPostProps {
   data: {
@@ -22,7 +22,7 @@ interface IFooterPostProps {
   };
 }
 
-const FooterPost: React.FC<IFooterPostProps> = ({ children, data }) => {
+const FooterPost: React.FC<IFooterPostProps> = ({ data }) => {
   const [toogle, setToogle] = useState(false);
   const { user } = useAuth();
 
@@ -72,6 +72,23 @@ const FooterPost: React.FC<IFooterPostProps> = ({ children, data }) => {
           <img src={send} alt="" />
         </button>
       </PostButtons>
+
+      {data.lastLike.length > 0 && (
+        <PostLike>
+          <img src={data.lastLike[0].preview} alt="" />
+          <span>Like by</span>
+          <strong>{data.lastLike[0].username}</strong>
+          {data.lastLike.length > 1 && (
+            <>
+              <span>and</span>
+              <strong>
+                {data.likes.length - 1}
+                others
+              </strong>
+            </>
+          )}
+        </PostLike>
+      )}
     </Container>
   );
 };
