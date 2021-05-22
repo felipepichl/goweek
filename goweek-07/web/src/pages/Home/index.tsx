@@ -50,8 +50,7 @@ const Home: React.FC = () => {
 
       setPosts(response.data);
 
-      /**
-        *
+      /*
         return 0 === true return -1 === false
         return 1 === true return -1 === false
         posts.map(post => post.likes.indexOf(user.id) === 0);
@@ -104,22 +103,22 @@ const Home: React.FC = () => {
           <footer>
             <PostButtons>
               <button type="button" onClick={() => handleLike(post.id)}>
-                {post.likes.indexOf(user.id) === 0 ? (
-                  <Animation
-                    direction={toogle ? -1 : 1}
-                    options={{
-                      animationData: likeAnimation,
-                      loop: false,
-                      autoplay: true,
-                    }}
-                  />
-                ) : (
+                {post.likes.indexOf(user.id) === -1 ? (
                   <Animation
                     direction={toogle ? 1 : -1}
                     options={{
                       animationData: likeAnimation,
                       loop: false,
                       autoplay: false,
+                    }}
+                  />
+                ) : (
+                  <Animation
+                    direction={toogle ? -1 : 1}
+                    options={{
+                      animationData: likeAnimation,
+                      loop: false,
+                      autoplay: true,
                     }}
                   />
                 )}
@@ -134,16 +133,22 @@ const Home: React.FC = () => {
               </button>
             </PostButtons>
 
-            <PostLike>
-              {post.lastLike.length > 0 && (
-                <>
-                  {toogle && <span>like</span>}
-                  <img src={post.lastLike[0].preview} alt="" />
-                  <span>Like by</span>
-                  <strong>{post.lastLike[0].username}</strong>
-                </>
-              )}
-            </PostLike>
+            {post.lastLike.length > 0 && (
+              <PostLike>
+                <img src={post.lastLike[0].preview} alt="" />
+                <span>Like by</span>
+                <strong>{post.lastLike[0].username}</strong>
+                {post.lastLike.length > 1 && (
+                  <>
+                    <span>and</span>
+                    <strong>
+                      {post.likes.length - 1}
+                      others
+                    </strong>
+                  </>
+                )}
+              </PostLike>
+            )}
 
             <PostDescription>
               <p>
