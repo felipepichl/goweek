@@ -110,16 +110,6 @@ export const ImageContainer = styled.div`
   }
 `;
 
-export const PostButtons = styled.div`
-  button {
-    margin-right: 5px;
-
-    img {
-      padding: 5px;
-    }
-  }
-`;
-
 export const PostLike = styled.div`
   display: flex;
   align-items: center;

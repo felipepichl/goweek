@@ -5,25 +5,23 @@ import { useAuth } from '../../hooks/auth';
 import api from '../../services/api';
 
 import Storie from '../../components/Storie';
+import FooterPost from '../../components/FooterPost';
 
 import more from '../../assets/more.svg';
-import comment from '../../assets/comment.svg';
-import send from '../../assets/send.svg';
 
-import likeAnimation from '../../assets/liked.json';
 import loading from '../../assets/history.json';
 
 import {
   Container,
   Post,
   ImageContainer,
-  PostButtons,
+  // PostButtons,
   PostComment,
   PostDescription,
   PostLike,
 } from './styles';
 
-interface Post {
+interface IPost {
   id: string;
   user: {
     username: string;
@@ -39,10 +37,10 @@ interface Post {
 }
 
 const Home: React.FC = () => {
-  const [toogle, setToogle] = useState(false);
+  // const [toogle, setToogle] = useState(false);
   const { user } = useAuth();
 
-  const [posts, setPosts] = useState<Post[]>([]);
+  const [posts, setPosts] = useState<IPost[]>([]);
 
   useEffect(() => {
     async function loadPost() {
@@ -60,18 +58,18 @@ const Home: React.FC = () => {
     loadPost();
   }, [user.id]);
 
-  const handleLike = useCallback(
-    async (id: string) => {
-      await api.post(`/likes/${id}`);
+  // const handleLike = useCallback(
+  //   async (id: string) => {
+  //     await api.post(`/likes/${id}`);
 
-      if (toogle) {
-        setToogle(false);
-      } else {
-        setToogle(true);
-      }
-    },
-    [toogle],
-  );
+  //     if (toogle) {
+  //       setToogle(false);
+  //     } else {
+  //       setToogle(true);
+  //     }
+  //   },
+  //   [toogle],
+  // );
 
   return (
     <Container>
@@ -100,7 +98,9 @@ const Home: React.FC = () => {
             <img src={post.url} alt="" />
           </article>
 
-          <footer>
+          <FooterPost data={post} />
+
+          {/* <footer>
             <PostButtons>
               <button type="button" onClick={() => handleLike(post.id)}>
                 {post.likes.indexOf(user.id) === -1 ? (
@@ -156,7 +156,7 @@ const Home: React.FC = () => {
                 {post.description}
               </p>
             </PostDescription>
-          </footer>
+          </footer> */}
 
           <form action="">
             <section>
