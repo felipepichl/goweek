@@ -9,17 +9,12 @@ import send from '../../assets/send.svg';
 
 import likeAnimation from '../../assets/liked.json';
 
-import { Container, PostButtons, PostLike } from './styles';
+import { Container, PostButtons, PostLike, PostDescription } from './styles';
+
+import { IPost } from '../../pages/Home';
 
 interface IFooterPostProps {
-  data: {
-    id: string;
-    lastLike: Array<{
-      username: string;
-      preview: string;
-    }>;
-    likes: Array<string>;
-  };
+  data: IPost;
 }
 
 const FooterPost: React.FC<IFooterPostProps> = ({ data }) => {
@@ -89,6 +84,13 @@ const FooterPost: React.FC<IFooterPostProps> = ({ data }) => {
           )}
         </PostLike>
       )}
+
+      <PostDescription>
+        <p>
+          <strong>{data.user.username}</strong>
+          {data.description}
+        </p>
+      </PostDescription>
     </Container>
   );
 };

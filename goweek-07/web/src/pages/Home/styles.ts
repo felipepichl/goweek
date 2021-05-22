@@ -106,13 +106,6 @@ export const ImageContainer = styled.div`
   }
 `;
 
-export const PostDescription = styled.div`
-  strong {
-    margin-left: 4px;
-    margin-right: 5px;
-  }
-`;
-
 export const PostComment = styled.button`
   color: #3897f0;
   font-weight: bold;

@@ -40,3 +40,10 @@ export const PostLike = styled.div`
     margin-right: 5px;
   }
 `;
+
+export const PostDescription = styled.div`
+  strong {
+    margin-left: 4px;
+    margin-right: 5px;
+  }
+`;

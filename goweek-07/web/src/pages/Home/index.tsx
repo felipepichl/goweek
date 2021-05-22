@@ -13,7 +13,7 @@ import loading from '../../assets/history.json';
 
 import { Container, Post, ImageContainer, PostComment } from './styles';
 
-interface IPost {
+export interface IPost {
   id: string;
   user: {
     username: string;
