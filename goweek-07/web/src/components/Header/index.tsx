@@ -40,8 +40,8 @@ const Header: React.FC = () => {
         <Link to="/">
           <img src={notifications} alt="" />
         </Link>
-        <Link to="/">
-          <img src={profile} alt="" />
+        <Link to="/profile">
+          <img src={profile} alt="/profile" />
         </Link>
       </aside>
     </Container>
