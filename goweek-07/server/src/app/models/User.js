@@ -40,6 +40,7 @@ const UserSchema = new mongoose.Schema(
  */
 
 UserSchema.virtual('preview').get(function() {
+  console.log(this.avatar);
   if (this.avatar) {
     return this.avatar.url;
   }
