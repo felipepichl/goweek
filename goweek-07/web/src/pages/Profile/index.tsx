@@ -1,11 +1,23 @@
 import React from 'react';
 
-import { Container } from './styles';
+import Button from '../../components/Button';
+
+import { Container, ProfileContainer } from './styles';
 
 const Profile: React.FC = () => {
   return (
     <Container>
-      <h1>Profile</h1>
+      <ProfileContainer>
+        <img
+          src="https://avatars.githubusercontent.com/u/22602639?v=4"
+          alt=""
+        />
+
+        <div>
+          <span>__dirname</span>
+          <Button>Edit Profile</Button>
+        </div>
+      </ProfileContainer>
     </Container>
   );
 };
