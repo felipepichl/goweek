@@ -1,21 +1,21 @@
 import React from 'react';
+import { useAuth } from '../../hooks/auth';
 
 import Button from '../../components/Button';
 
 import { Container, Content, ProfileContainer, Bio, Posts } from './styles';
 
 const Profile: React.FC = () => {
+  const { user } = useAuth();
+
   return (
     <Container>
       <Content>
         <ProfileContainer>
-          <img
-            src="https://avatars.githubusercontent.com/u/22602639?v=4"
-            alt=""
-          />
+          <img src={user.preview} alt="" />
 
           <div>
-            <span>__dirname</span>
+            <span>{user.username}</span>
             <Button>Edit Profile</Button>
           </div>
         </ProfileContainer>
@@ -24,26 +24,18 @@ const Profile: React.FC = () => {
         </Bio>
 
         <Posts>
-          <ul>
-            <li>
-              <img
-                src="https://images.unsplash.com/photo-1484053801020-3a74ca659b03?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8c25vdyUyMGNhc3RsZXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
-                alt=""
-              />
-            </li>
-            <li>
-              <img
-                src="https://images.unsplash.com/photo-1484053801020-3a74ca659b03?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8c25vdyUyMGNhc3RsZXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
-                alt=""
-              />
-            </li>
-            <li>
-              <img
-                src="https://images.unsplash.com/photo-1484053801020-3a74ca659b03?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8c25vdyUyMGNhc3RsZXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
-                alt=""
-              />
-            </li>
-          </ul>
+          <img
+            src="https://images.unsplash.com/photo-1484053801020-3a74ca659b03?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8c25vdyUyMGNhc3RsZXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+            alt=""
+          />
+          <img
+            src="https://images.unsplash.com/photo-1484053801020-3a74ca659b03?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8c25vdyUyMGNhc3RsZXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+            alt=""
+          />
+          <img
+            src="https://images.unsplash.com/photo-1484053801020-3a74ca659b03?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8c25vdyUyMGNhc3RsZXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+            alt=""
+          />
         </Posts>
       </Content>
     </Container>

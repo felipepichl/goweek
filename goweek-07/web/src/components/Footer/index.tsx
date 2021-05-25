@@ -28,7 +28,7 @@ const Footer: React.FC = () => {
         <Icon src={notifications} />
       </Link>
 
-      <Link to="/">
+      <Link to="/profile">
         <Icon src={profile} />
       </Link>
     </Container>

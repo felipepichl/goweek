@@ -5,8 +5,10 @@ export const Container = styled.div`
 
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: start;
   flex-direction: column;
+
+  margin-top: 92px;
 `;
 
 export const Content = styled.div`
@@ -29,10 +31,9 @@ export const ProfileContainer = styled.div`
     display: flex;
     flex-direction: column;
     padding: 10px;
+    flex: 1;
 
-    width: 100%;
-
-    span {
+    > span {
       font-size: 24px;
     }
 
@@ -55,18 +56,16 @@ export const Bio = styled.div`
 `;
 
 export const Posts = styled.div`
-  /* width: 100vw; */
-  /* height: 100vh; */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 4px;
 
-  ul {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 8px;
+  min-width: 360px;
+  min-height: 118px;
 
-    li {
-      img {
-        width: 100%;
-      }
-    }
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: none;
   }
 `;

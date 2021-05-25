@@ -3,6 +3,8 @@ import api from '../services/api';
 
 interface User {
   id: string;
+  username: string;
+  preview: string;
 }
 
 interface ISignInCredetials {
