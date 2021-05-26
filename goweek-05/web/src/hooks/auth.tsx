@@ -5,15 +5,20 @@ interface ISignInCreadetial {
   login: string;
 }
 
+interface IUser {
+  login: string;
+  avatar_url: string;
+}
+
 interface IAuthContextData {
-  user: object;
+  user: IUser;
   signIn(credentials: ISignInCreadetial): Promise<void>;
   signOut(): void;
 }
 
 interface IAuthState {
   token: string;
-  user: object;
+  user: IUser;
 }
 
 const AuthContext = createContext<IAuthContextData>({} as IAuthContextData);
