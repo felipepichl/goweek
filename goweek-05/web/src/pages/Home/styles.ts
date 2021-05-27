@@ -21,13 +21,22 @@ export const Tweet = styled.div`
   background: #fff;
   border: 1px solid rgba(38, 38, 38, 0.1);
 
+  @media screen and (max-width: 769px) {
+    width: 100%;
+  }
+
   img {
     width: 48px;
     height: 48px;
     border-radius: 50%;
   }
 
-  div {
-    min-width: 500px;
+  textarea {
+    padding: 8px;
+
+    resize: none;
+    border: none;
+    width: 100%;
+    font-size: 20px;
   }
 `;

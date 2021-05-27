@@ -14,7 +14,8 @@ const Home: React.FC = () => {
 
       <Tweet>
         <img src={user.avatar_url} alt="" />
-        <div />
+
+        <textarea placeholder="What's happening?" />
       </Tweet>
     </Container>
   );
