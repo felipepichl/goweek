@@ -11,10 +11,11 @@ export const Container = styled.div`
 
 export const Tweet = styled.div`
   display: flex;
-  justify-content: space-between;
   align-items: center;
 
   width: 600px;
+  height: 94px;
+
   margin-top: 75px;
   padding: 10px;
 
@@ -32,11 +33,17 @@ export const Tweet = styled.div`
   }
 
   textarea {
-    padding: 8px;
-
+    /* border: 3px solid #d8e5ed; */
+    border-radius: 5px;
+    font-size: 18px;
+    padding: 15px;
+    width: 100%;
     resize: none;
     border: none;
+
+    /* margin-left: 8px;
+    resize: none;
     width: 100%;
-    font-size: 20px;
+    font-size: 20px; */
   }
 `;
