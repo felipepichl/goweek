@@ -13,9 +13,12 @@ const Home: React.FC = () => {
       <Header />
 
       <Tweet>
-        <img src={user.avatar_url} alt="" />
+        <div>
+          <img src={user.avatar_url} alt="" />
+          <textarea placeholder="What's happening?" />
+        </div>
 
-        <textarea placeholder="What's happening?" />
+        <button type="button">Tweet</button>
       </Tweet>
     </Container>
   );

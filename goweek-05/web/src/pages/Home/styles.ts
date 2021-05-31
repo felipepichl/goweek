@@ -10,40 +10,36 @@ export const Container = styled.div`
 `;
 
 export const Tweet = styled.div`
-  display: flex;
-  align-items: center;
+  div {
+    display: flex;
+    align-items: center;
 
-  width: 600px;
-  height: 94px;
+    width: 600px;
+    height: 94px;
 
-  margin-top: 75px;
-  padding: 10px;
+    margin-top: 75px;
+    padding: 10px;
 
-  background: #fff;
-  border: 1px solid rgba(38, 38, 38, 0.1);
+    background: #fff;
+    border: 1px solid rgba(38, 38, 38, 0.1);
 
-  @media screen and (max-width: 769px) {
-    width: 100%;
-  }
+    @media screen and (max-width: 769px) {
+      width: 100%;
+    }
 
-  img {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-  }
+    img {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+    }
 
-  textarea {
-    /* border: 3px solid #d8e5ed; */
-    border-radius: 5px;
-    font-size: 18px;
-    padding: 15px;
-    width: 100%;
-    resize: none;
-    border: none;
-
-    /* margin-left: 8px;
-    resize: none;
-    width: 100%;
-    font-size: 20px; */
+    textarea {
+      border-radius: 5px;
+      font-size: 18px;
+      padding: 15px;
+      width: 100%;
+      resize: none;
+      border: none;
+    }
   }
 `;
