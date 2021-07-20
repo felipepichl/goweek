@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { shade } from 'polished';
 
 export const Container = styled.div`
   height: 100vh;
@@ -10,22 +11,26 @@ export const Container = styled.div`
 `;
 
 export const Tweet = styled.div`
+  background: #fff;
+  border: 1px solid rgba(38, 38, 38, 0.1);
+
+  max-width: 600px;
+  width: 600px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+
+  padding: 10px;
+
   div {
     display: flex;
     align-items: center;
 
-    width: 600px;
     height: 94px;
+    width: 100%;
 
     margin-top: 75px;
-    padding: 10px;
-
-    background: #fff;
-    border: 1px solid rgba(38, 38, 38, 0.1);
-
-    @media screen and (max-width: 769px) {
-      width: 100%;
-    }
 
     img {
       width: 48px;
@@ -40,6 +45,22 @@ export const Tweet = styled.div`
       width: 100%;
       resize: none;
       border: none;
+    }
+  }
+
+  button {
+    background: #4bb0ee;
+    width: 76px;
+    height: 42px;
+    border-radius: 38px;
+    border: none;
+    color: #fff;
+    font-weight: 500;
+
+    transition: background-color 0.2s;
+
+    &:hover {
+      background: ${shade(0.2, '#4bb0ee')};
     }
   }
 `;
