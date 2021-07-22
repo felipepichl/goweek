@@ -20,6 +20,16 @@ export default class CreateBoxes1626918260431 implements MigrationInterface {
             name: 'title',
             type: 'varchar',
           },
+          {
+            name: 'created_at',
+            type: 'timestamp',
+            default: 'now()',
+          },
+          {
+            name: 'updated_at',
+            type: 'timestamp',
+            default: 'now()',
+          },
         ],
 
         foreignKeys: [
