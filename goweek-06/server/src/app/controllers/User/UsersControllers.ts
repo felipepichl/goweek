@@ -2,9 +2,9 @@ import { Request, Response } from 'express';
 import { AppError } from 'app/error/AppError';
 import * as Yup from 'yup';
 
-import { UsersServices } from '../services/User/UsersServices';
+import { UsersServices } from '../../services/User/UsersServices';
 
-import userView from '../views/UserView';
+import userView from '../../views/UserView';
 
 class UsersController {
   public async store(request: Request, response: Response): Promise<Response> {
