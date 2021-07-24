@@ -13,7 +13,7 @@ import { v4 as uuid } from 'uuid';
 import { User } from './User';
 
 @Entity('boxes')
-class Boxes {
+class Boxe {
   @PrimaryColumn()
   id: string;
 
@@ -43,4 +43,4 @@ class Boxes {
   }
 }
 
-export { Boxes };
+export { Boxe };
