@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import { AppError } from 'app/error/AppError';
 import * as Yup from 'yup';
 
-import { UsersServices } from '../services/UsersServices';
+import { UsersServices } from '../services/User/UsersServices';
 
 import userView from '../views/UserView';
 

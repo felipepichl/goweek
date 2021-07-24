@@ -5,11 +5,11 @@ import { sign } from 'jsonwebtoken';
 import auth from '@config/auth';
 
 import { User } from '@entities/User';
-import { UsersRepository } from '../repositories/UsersRepository';
+import { UsersRepository } from '../../repositories/UsersRepository';
 
-import { AppError } from '../error/AppError';
+import { AppError } from '../../error/AppError';
 
-import userView, { IUser } from '../views/UserView';
+import userView, { IUser } from '../../views/UserView';
 
 interface IRequest {
   email: string;

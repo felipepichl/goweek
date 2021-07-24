@@ -27,9 +27,6 @@ class Boxe {
   @ManyToOne(() => User)
   user: User;
 
-  @Column()
-  password: string;
-
   @CreateDateColumn()
   created_at: Date;
 
