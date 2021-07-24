@@ -1,8 +1,8 @@
 import { Request, Response } from 'express';
 
-import { CreateBoxesServices } from '../services/Boxe/CreateBoxesServices';
+import { CreateBoxesServices } from '../../services/Boxe/CreateBoxesServices';
 
-class BoxesController {
+class CreateBoxesController {
   public async handle(request: Request, response: Response): Promise<Response> {
     const { title } = request.body;
     const user_id = request.user.id;
@@ -18,4 +18,4 @@ class BoxesController {
   }
 }
 
-export { BoxesController };
+export { CreateBoxesController };

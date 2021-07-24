@@ -1,12 +1,12 @@
 import { Router } from 'express';
 
-import { BoxesController } from '../controllers/BoxesController';
+import { CreateBoxesController } from '../controllers/Boxes/CreateBoxesController';
 
 import { ensureAuthenticated } from '../middlewares/ensureAuthenticated';
 
 const createBoxeRouter = Router();
 
-const boxesController = new BoxesController();
+const boxesController = new CreateBoxesController();
 
 createBoxeRouter.use(ensureAuthenticated);
 
