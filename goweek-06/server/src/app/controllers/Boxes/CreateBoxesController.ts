@@ -7,11 +7,14 @@ class CreateBoxesController {
     const { title } = request.body;
     const user_id = request.user.id;
 
+    const { filename: file } = request.file as Express.Multer.File;
+
     const createBoxesServices = new CreateBoxesServices();
 
     const boxes = createBoxesServices.execute({
       title,
       user_id,
+      file,
     });
 
     return response.json(boxes);
