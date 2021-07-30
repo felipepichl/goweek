@@ -11,6 +11,7 @@ import {
 import { v4 as uuid } from 'uuid';
 
 import { User } from './User';
+import { File } from './File';
 
 @Entity('boxes')
 class Boxe {
@@ -28,7 +29,11 @@ class Boxe {
   user: User;
 
   @Column()
-  file: string;
+  file_id: string;
+
+  @JoinColumn({ name: 'file_id' })
+  @ManyToOne(() => File)
+  file: File;
 
   @CreateDateColumn()
   created_at: Date;
