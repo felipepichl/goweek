@@ -8,7 +8,6 @@ import { AppError } from 'app/error/AppError';
 interface IRequest {
   title: string;
   user_id: string;
-  file_id: string;
 }
 
 class CreateBoxesServices {
@@ -18,7 +17,7 @@ class CreateBoxesServices {
     this.boxesRepository = getCustomRepository(BoxesRepository);
   }
 
-  public async execute({ title, user_id, file_id }: IRequest): Promise<Boxe> {
+  public async execute({ title, user_id }: IRequest): Promise<Boxe> {
     const boxeAllreadyExists = await this.boxesRepository.find({ title });
 
     if (boxeAllreadyExists) {
@@ -28,7 +27,6 @@ class CreateBoxesServices {
     const boxe = this.boxesRepository.create({
       title,
       user_id,
-      file_id,
     });
 
     await this.boxesRepository.save(boxe);
