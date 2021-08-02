@@ -14,6 +14,10 @@ const createFilesController = new CreateFilesController();
 
 createFileRouter.use(ensureAuthenticated);
 
-createFileRouter.post('', upload.single('file'), createFilesController.handle);
+createFileRouter.post(
+  '/:box_id',
+  upload.single('file'),
+  createFilesController.handle,
+);
 
 export { createFileRouter };
