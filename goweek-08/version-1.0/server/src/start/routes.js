@@ -30,4 +30,4 @@ routes.get('/', (req, res) => {
  * routes.post('/sessions', SessionController.store);
  */
 
-export default routes;
+export { routes };
