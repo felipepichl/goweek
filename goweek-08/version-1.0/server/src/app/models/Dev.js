@@ -15,6 +15,8 @@ const DevSchema = new Schema(
       type: String,
       required: true,
     },
+    likes: [],
+    dislikes: [],
   },
   {
     timestamps: true,
