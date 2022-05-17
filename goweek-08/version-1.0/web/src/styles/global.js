@@ -3,7 +3,7 @@ import { createGlobalStyle } from 'styled-components';
 import background from '../assets/images/backgroud.jpg';
 
 export default createGlobalStyle`
-  @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+  /* @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap'); */
   * {
     margin: 0;
     padding: 0;
@@ -13,8 +13,8 @@ export default createGlobalStyle`
   }
 
   body {
-    background: url(${background}) no-repeat center center fixed;
-    background-size: cover;
+    /* background: url(${background}) no-repeat center center fixed; */
+    /* background-size: cover; */
     -webkit-font-smoothing: antialiased;
 
   }
