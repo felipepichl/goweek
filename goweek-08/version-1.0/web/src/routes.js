@@ -9,7 +9,7 @@ export default function Routes() {
     <>
       <Switch>
         <Route path="/" exact component={SignIn} />
-        <Route path="/home" component={Main} />
+        <Route path="/dev/:id" component={Main} />
       </Switch>
     </>
   );

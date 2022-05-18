@@ -2,13 +2,11 @@ import React from 'react';
 import FadeIn from 'react-fade-in';
 import { Container } from './styles';
 
-export default function Main() {
+export default function Main({ match }) {
   return (
     <Container>
       <FadeIn delay={85} transitionDuration={600}>
-        <div>
-          <h1>welcome to my template</h1>
-        </div>
+        <h1>{match.params.id}</h1>
       </FadeIn>
     </Container>
   );
