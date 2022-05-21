@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import React, { useEffect, useState } from 'react';
 import FadeIn from 'react-fade-in';
 import { api } from '../../services/api';
@@ -9,20 +10,33 @@ import dislike from '../../assets/dislike.svg';
 import { Container, Buttons } from './styles';
 
 export default function Main({ match }) {
-  const { id } = match.params;
+  const { id: _id } = match.params;
   const [devs, setDevs] = useState([]);
 
   useEffect(() => {
     async function loadDevs() {
       const response = await api.get('/devs', {
-        headers: { user: id },
+        headers: { user: _id },
       });
 
       setDevs(response.data);
     }
 
     loadDevs();
-  }, [id]);
+  }, [_id]);
+
+  async function handleLike(id) {
+    await api.post(`/devs/${id}/like`, {
+      headers: { user: _id },
+    });
+  }
+
+  async function handleDislike(id) {
+    await api.post(`/devs/${id}/dislike`, {
+      headers: { user: _id },
+    });
+  }
+
   return (
     <Container>
       <FadeIn delay={85} transitionDuration={600}>
@@ -30,7 +44,6 @@ export default function Main({ match }) {
 
         <ul>
           {devs.map(dev => (
-            // eslint-disable-next-line no-underscore-dangle
             <li key={dev._id}>
               <img src={dev.avatar} alt="" />
 
@@ -39,10 +52,10 @@ export default function Main({ match }) {
                 <p>{dev.bio}</p>
               </footer>
               <Buttons>
-                <button type="button">
+                <button type="button" onClick={() => handleDislike(dev._id)}>
                   <img src={dislike} alt="" />
                 </button>
-                <button type="button">
+                <button type="button" onClick={() => handleLike(dev._id)}>
                   <img src={like} alt="" />
                 </button>
               </Buttons>
