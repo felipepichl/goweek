@@ -1,5 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import FadeIn from 'react-fade-in';
 import { api } from '../../services/api';
 
@@ -44,7 +45,9 @@ export default function Main({ match }) {
   return (
     <Container>
       <FadeIn delay={85} transitionDuration={600}>
-        <img src={logo} alt="Tindev" />
+        <Link to="/">
+          <img src={logo} alt="Tindev" />
+        </Link>
 
         {devs.length > 0 ? (
           <ul>
