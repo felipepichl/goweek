@@ -67,3 +67,10 @@ export const Buttons = styled.div`
     }
   }
 `;
+
+export const Done = styled.div`
+  font-size: 32px;
+  color: #999;
+  font-weight: bold;
+  margin-top: 300px;
+`;
