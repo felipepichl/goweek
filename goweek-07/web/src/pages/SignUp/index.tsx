@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Form } from '@unform/web';
 import { FormHandles } from '@unform/core';
 import * as Yup from 'yup';
+import api from '../../services/api';
 
 import getValidationsErros from '../../utils/getValidationsErrors';
 
@@ -15,7 +16,7 @@ import { AnimationContainer } from './styles';
 
 interface ISignUpFormData {
   email: string;
-  fullname: string;
+  name: string;
   username: string;
 }
 
@@ -26,11 +27,14 @@ const SignUp: React.FC = () => {
     try {
       formRef.current?.setErrors({});
 
+      // eslint-disable-next-line no-console
+      console.log(data);
+
       const schema = Yup.object().shape({
         email: Yup.string()
           .email('A valid email is required')
           .required('This field is required'),
-        fullname: Yup.string().required('This field is required'),
+        name: Yup.string().required('This field is required'),
         username: Yup.string()
           .required('This field is required')
           .lowercase('Lowercase only')
@@ -39,8 +43,7 @@ const SignUp: React.FC = () => {
 
       await schema.validate(data, { abortEarly: false });
 
-      // eslint-disable-next-line no-console
-      console.log('Sign Up');
+      //api.post('/users', data);
     } catch (err) {
       if (err instanceof Yup.ValidationError) {
         const error = getValidationsErros(err);
