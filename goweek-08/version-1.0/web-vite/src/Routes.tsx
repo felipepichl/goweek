@@ -6,8 +6,8 @@ import { Main } from './pages/Main'
 export function Router() {
   return (
     <Routes>
-      <Route path='/' element={<SignIn />}/>
-      <Route path='/dev/:id' element={<Main />}/>
+      <Route path="/" element={<SignIn />} />
+      <Route path="/dev/:id" element={<Main />} />
     </Routes>
   )
 }
