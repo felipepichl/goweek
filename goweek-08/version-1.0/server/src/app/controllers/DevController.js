@@ -38,6 +38,8 @@ module.exports = {
       ],
     });
 
+    console.log(users);
+
     return res.json(users);
   },
 };

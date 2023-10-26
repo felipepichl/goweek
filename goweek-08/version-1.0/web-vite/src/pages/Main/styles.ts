@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const Container = styled.div`
   max-width: 980px;
@@ -44,7 +44,7 @@ export const Container = styled.div`
       }
     }
   }
-`;
+`
 
 export const Buttons = styled.div`
   margin-top: 10px;
@@ -58,6 +58,7 @@ export const Buttons = styled.div`
     border: 0;
     border-radius: 4px;
     background: #fff;
+    cursor: pointer;
 
     :hover {
       img {
@@ -66,11 +67,11 @@ export const Buttons = styled.div`
       }
     }
   }
-`;
+`
 
 export const Done = styled.div`
   font-size: 32px;
   color: #999;
   font-weight: bold;
   margin-top: 300px;
-`;
+`
