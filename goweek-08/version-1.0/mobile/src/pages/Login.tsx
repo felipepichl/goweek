@@ -33,6 +33,8 @@ export function Login(){
 
     const {_id} = response.data;
 
+    console.log(_id)
+
     await AsyncStorage.setItem('user', _id);
 
     navigate('main', { user: _id })

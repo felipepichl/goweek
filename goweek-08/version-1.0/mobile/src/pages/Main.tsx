@@ -1,7 +1,8 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { RouteProp, useRoute, useNavigation } from '@react-navigation/native';
 
-// import api from '../services/api';
+import { api } from '../services/api';
 
 import {
   SafeAreaView,
@@ -15,14 +16,35 @@ import {
 import logo from '../assets/logo.png';
 import like from '../assets/like.png';
 import dislike from '../assets/dislike.png';
-import { useNavigation } from '@react-navigation/native';
+
+
+type RootParamsProps = {
+   userId: string
+};
+
 
 export function Main() {
   const [users, setUsers] = useState([]);
   
   const navigation = useNavigation()
-  // const id = navigation.getParam('user');
+  const route = useRoute()
   
+  const { userId } = route.params as RootParamsProps
+  
+  useEffect(() => {
+    async function loadUsers() {
+      // const response = await api.get('/devs', {
+      //   headers: {
+      //     user: userId,
+      //   },
+      // });
+      // setUsers(response.data);
+
+      console.log('ROUTE =>', userId)
+    }
+
+    loadUsers();
+  }, [userId]);
 
   async function handleLogout() {
     await AsyncStorage.clear();
