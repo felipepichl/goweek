@@ -35,7 +35,7 @@ export function Login(){
 
     console.log(_id)
 
-    await AsyncStorage.setItem('user', _id);
+    //await AsyncStorage.setItem('user', _id);
 
     navigate('main', { user: _id })
   }

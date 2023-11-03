@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { RouteProp, useRoute, useNavigation } from '@react-navigation/native';
+import { useRoute, useNavigation } from '@react-navigation/native';
 
 import { api } from '../services/api';
 
@@ -19,32 +19,39 @@ import dislike from '../assets/dislike.png';
 
 
 type RootParamsProps = {
-   userId: string
+   user: string
 };
 
+type User = {
+  _id: string;
+  name: string;
+  user: string;
+  bio: string;
+  avatar: string;
+  likes: string[]; 
+  dislikes: string[]; 
+}
 
 export function Main() {
-  const [users, setUsers] = useState([]);
+  const [devs, setDevs] = useState<User[]>([]);
   
   const navigation = useNavigation()
   const route = useRoute()
   
-  const { userId } = route.params as RootParamsProps
+  const { user } = route.params as RootParamsProps
   
   useEffect(() => {
-    async function loadUsers() {
-      // const response = await api.get('/devs', {
-      //   headers: {
-      //     user: userId,
-      //   },
-      // });
-      // setUsers(response.data);
-
-      console.log('ROUTE =>', userId)
+    async function loadDevs() {
+      const response = await api.get('/devs', {
+        headers: {
+          user: user,
+        },
+      });
+      setDevs(response.data);
     }
 
-    loadUsers();
-  }, [userId]);
+    loadDevs();
+  }, [user]);
 
   async function handleLogout() {
     await AsyncStorage.clear();
@@ -57,6 +64,8 @@ export function Main() {
        <TouchableOpacity onPress={handleLogout}>
         <Image style={styles.logo} source={logo} />
       </TouchableOpacity>
+
+      
     </SafeAreaView>
   )
 }
@@ -70,7 +79,7 @@ const styles = StyleSheet.create({
   },
 
   logo: {
-    marginTop: 30,
+    marginTop: 80,
   },
 
   empty: {
